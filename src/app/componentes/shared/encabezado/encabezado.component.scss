@@ -1,0 +1,25 @@
+@import './../../../../scss/variables';
+@import './../../../../scss/mixins';
+
+.contenedor{
+    display: grid;
+    grid-template-columns: $margenContenido auto $margenContenido;
+    border-bottom: 3px solid $colorPrimario;
+    background-color: white;
+    @include tabletLaptop(){
+        grid-template-columns: $margenContenido auto 55%;
+    }
+    .contLogo{
+        text-align: center;
+        padding: 10px 0;
+        @include tabletLaptop(){
+            text-align: left;
+        }
+        img{
+            width: 30%;
+            @include tabletLaptop(){
+                width: 25%;
+            }
+        }
+    }
+}

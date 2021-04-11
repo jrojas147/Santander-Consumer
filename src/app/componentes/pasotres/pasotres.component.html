@@ -1,0 +1,142 @@
+<div class="contenedor">
+    <mat-spinner *ngIf="!resultado" [@animationFadeOut]="resultado"></mat-spinner>
+    <div class="contenido">
+    <div class="encabezadoPaso">
+        <p class="izquierda">Respuesta a tu solicitud</p>
+    </div>
+    <hr>
+
+    <div class="contRespuesta">
+        <div [@animationFadeOut]="resultado">
+            <!-- Respuesta Preaprobado No enriquecido -->
+
+            <div *ngIf="resultado == 2 && !scanParams.enriquecido && (variantePreaprobado == 2 || variantePreaprobado == 21 || variantePreaprobado == 22)">
+                <div class="contRespuesta">
+                    <img [src]="const.negado" alt="">
+                    <p class="tituloNegado">¡Lo sentimos!</p>
+                    <p class="textoRespuesta">Tu solicitud no es viable en este momento.</p>
+                </div>
+            </div>
+
+            <div *ngIf="resultado == 2 && !scanParams.enriquecido && (variantePreaprobado == 23 || variantePreaprobado == 24 || variantePreaprobado == 25 || variantePreaprobado == 26)">
+                <div class="contRespuesta">
+                    <img [src]="const.negado" alt="">
+                    <p class="tituloNegado">¡Lo sentimos!</p>
+                    <p class="textoRespuesta">Tu solicitud no es viable en este momento.</p>
+                </div>
+            </div>
+
+            <!-- Respuesta Preaprobado enriquecido -->
+
+            <div *ngIf="resultado == 2 && scanParams.enriquecido && (variantePreaprobado == 2 || variantePreaprobado == 22)">
+                <div class="contRespuesta">
+                    <img [src]="const.negado" alt="">
+                    <p class="tituloNegado">¡Lo sentimos!</p>
+                    <p class="textoRespuesta">Tu solicitud no es viable en este momento.</p>
+                </div>
+            </div>
+
+            <div *ngIf="resultado == 2 && scanParams.enriquecido && variantePreaprobado == 21">
+                <div class="contRespuesta">
+                    <img [src]="const.aprobado" alt="">
+                    <p class="tituloAprobado">¡Estás muy cerca de tener tu crédito aprobado! Para lograrlo debes enviar un correo a digital@santanderconsumer.co con los siguientes documentos:</p>
+                    <p class="textoRespuesta">1) Si eres empleado (permanente, por prestación de servicios o por obra/labor): Debes haber trabajado los últimos 12 meses, y debes enviar el/los certificado(s) que lo demuestren<br><br>
+                        2) Si eres independiente: Debes tener una trayectoria de al menos 2 años, y debes enviar Cámara de Comercio ó RUT, extractos bancarios de los últimos 3 meses y dos referencias comerciales (cartas de tus proveedores o clientes indicando tiempo de la relación y monto promedio de los pagos)</p>
+                </div>
+            </div>
+
+            <div *ngIf="resultado == 2 && scanParams.enriquecido && (variantePreaprobado == 23 || variantePreaprobado == 26)">
+                <div class="contRespuesta">
+                    <img [src]="const.aprobado" alt="">
+                    <p class="tituloAprobado">¡Felicitaciones!</p>
+                    <p class="textoRespuesta"> Tu crédito es viable. Estás a un click de tener carro, chatea con tu asesor personalizado haciendo click en el boton o escribiéndonos vía Whatsapp a nuestra cuenta oficial +57 1 7443592</p>
+                </div>
+            </div>
+
+            <div *ngIf="resultado == 2 && scanParams.enriquecido && (variantePreaprobado == 24 || variantePreaprobado == 25)">
+                <div class="contRespuesta">
+                    <img [src]="const.aprobado" alt="">
+                    <p class="tituloAprobado">¡Estás muy cerca de tener tu crédito aprobado! Para lograrlo debes enviar un correo a digital@santanderconsumer.co con los siguientes documentos:</p>
+                    <p class="textoRespuesta"> 1) Si eres empleado (permanente, por prestación de servicios o por obra/labor): Debes haber trabajado los últimos 12 meses, y debes enviar el/los certificado(s) que lo demuestren<br><br>
+                        2) Si eres independiente: Debes tener una trayectoria de al menos 2 años, y debes enviar Cámara de Comercio ó RUT, extractos bancarios de los últimos 3 meses y dos referencias comerciales (cartas de tus proveedores o clientes indicando tiempo de la relación y monto promedio de los pagos)</p>
+                </div>
+            </div>
+
+            <!--  -->
+            <div *ngIf="resultado == 3 && !scanParams.enriquecido"><!-- Aprobado con documentos -->
+                <div class="contRespuesta">
+                    <img [src]="const.aprobado" alt="">
+                    <p class="tituloAprobado">¡Tu solicitud es viable!</p>
+                    <p class="textoRespuesta">Pronto uno de nuestros asesores se comunicará contigo para continuar la solicitud de crédito.</p>
+                </div>
+            </div>
+            <div *ngIf="resultado == 3 && scanParams.enriquecido"><!-- Aprobado con documentos -->
+                <div class="contRespuesta">
+                    <img [src]="const.aprobado" alt="">
+                    <p class="tituloAprobado">¡Tu solicitud es viable!</p>
+                    <p class="textoRespuesta">¡Felicitaciones! Tu crédito es viable. Estás a un click de tener carro, chatea con tu asesor personalizado haciendo click en el botón o escribiéndonos vía Whatsapp a nuestra cuenta oficial +57 1 7443592</p>
+                </div>
+            </div>
+            <div *ngIf="resultado == 4 && !scanParams.enriquecido"><!-- Aprobado sin documentos -->
+                <div class="contRespuesta">
+                    <img [src]="const.aprobado" alt="">
+                    <p class="tituloAprobado">Tu solicitud ya está en proceso</p>
+                    <p class="textoRespuesta">Pronto uno de nuestros asesores te llamara para acompañarte hasta que tengas tu vehículo.</p>
+                </div>
+            </div>
+            <div *ngIf="resultado == 4 && scanParams.enriquecido"><!-- Aprobado sin documentos -->
+                <div class="contRespuesta">
+                    <img [src]="const.aprobado" alt="">
+                    <p class="tituloAprobado">Tu solicitud ya está en proceso</p>
+                    <p class="textoRespuesta">Chatea con tu asesor personalizado haciendo click en el botón o escribiéndonos vía Whatsapp a nuestra cuenta oficial +57 1 7443592</p>
+                </div>
+            </div>
+            <div *ngIf="resultado == 1"><!-- Negado -->
+                <div class="contRespuesta">
+                    <img [src]="const.negado" alt="">
+                    <p class="tituloNegado">¡Lo sentimos!</p>
+                    <p class="textoRespuesta">Tu solicitud no es viable en este momento.</p>
+                </div>
+            </div>
+            <div *ngIf="resultado == -1"><!-- Error de sistema -->
+                <div class="contRespuesta">
+                    <img [src]="const.negado" alt="">
+                    <p class="tituloNegado">¡Ups ocurrió un error!</p>
+                    <p class="textoRespuesta">Tuvimos un problema, por favor intenta más tarde.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="contBotonPaso">
+    <div *ngIf="resultado && sendMail" [@animationFadeOut]="resultado" class="piepaso" id="mail">
+        <a href="mailto:digital@santanderconsumer.co?subject=Soy-preaprobado">
+            <button
+            color="primary"
+            mat-button
+            matStepperNext
+            >Enviar email</button>
+        </a>
+      </div>
+    <div *ngIf="resultado && sendWhatsapp" [@animationFadeOut]="resultado" class="piepaso" id="wsp">
+        <a href="https://cariai.com/santanderdigitalchannel/santanderdigitalchannel">
+            <button
+            color="primary"
+            mat-button
+            matStepperNext
+            >Chatea con <br class="noBig"> tu asesor</button>
+        </a>
+      </div>
+    <div *ngIf="resultado" [@animationFadeOut]="resultado" class="piepaso">
+        <button
+        color="primary"
+        id="finalizar"
+        (click)="gotoReferrer()"
+        mat-button
+        matStepperNext
+        >FINALIZAR<mat-icon>arrow_right_icon</mat-icon></button>
+      </div>
+      </div>
+    </div>
+
+</div>

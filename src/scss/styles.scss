@@ -1,0 +1,262 @@
+@import '~@angular/material/theming';
+@import 'fuentes';
+@import '~material-icons/iconfont/material-icons.css';
+@import 'mixins';
+@import 'variables';
+
+@include mat-core();
+
+$my-app-primary: mat-palette($mat-red);
+$my-app-accent: mat-palette($mat-red, A400, A400, A400);
+$my-app-theme: mat-light-theme($my-app-accent, $my-app-accent);
+
+@include angular-material-theme($my-app-theme);
+
+* {
+    font-family: Fira Sans;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: all 0.5s;
+}
+
+/* Steps */
+/* Sombreado steps */
+.mat-horizontal-stepper-header{
+    background-color: transparent !important;
+}
+
+.mat-horizontal-stepper-header .mat-step-icon-selected{
+    background-color: $colorPrimario !important;
+}
+
+.mat-step-icon{
+    background-color: $colorSecundario !important;
+}
+
+/* Botones */
+.mat-button.mat-primary[disabled]{
+    background-color: $colorTerciario !important;
+}
+.mat-button.mat-primary{
+    background-color: $colorPrimario;
+    color: white !important;
+    width: 100%;
+}
+
+button#finalizar {
+    background: none !important;
+    color: #E70718 !important;
+    font-weight: 900;
+}
+
+/* Estilos especificos Stepper Material */
+.mat-horizontal-stepper-header-container{
+    display: grid !important;
+    grid-template-columns: repeat(3, auto) !important;
+    grid-template-rows: 1fr !important;
+    padding: 15px 10px 0 10px; 
+    
+    @include tabletLaptop(){
+        padding: 20px 20px 0 20px;
+    }
+  }
+  
+  .mat-step-icon .mat-icon, .mat-step-icon-content{
+    text-align: center;
+  }
+  
+  .mat-horizontal-stepper-header{
+    display: grid !important;
+    align-self: center !important;
+    justify-self: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .mat-step-header{
+    grid-row: 1 !important;
+    align-self: center !important;
+    justify-self: center !important;
+  }
+  
+  .mat-step-header .mat-step-header-ripple{
+    position: relative !important;
+    display: grid !important;
+    padding-top: 15px;
+  }
+  
+  .mat-horizontal-stepper-header .mat-step-icon{
+    align-self: center !important;
+    justify-self: center !important;
+    margin: 0px !important;
+    grid-row: 2;
+  }
+  
+  .mat-step-icon .mat-icon, .mat-step-icon-content {
+    font-size: 11px !important;
+  }
+  /* Orden de los componentes */
+  .mat-step-label{
+      grid-row: 1;
+      font-size: 10px;
+  }
+  
+  /* Línea */
+  .mat-stepper-horizontal-line{
+    border: 1px solid !important;
+    grid-row: 1 !important;
+    margin: 0 -40px !important;
+    @include tabletLaptop(){
+        margin: 0 -70px !important;
+    }
+  }
+
+  /* Contenido Pasos */
+
+  .encabezadoPaso{
+      display: grid;
+      grid-template-columns: auto auto;
+      padding: 15px 0px;
+      p{
+        font-size: 12px;
+        align-self: center;      
+      }
+  }
+
+  p.izquierda{
+      font-weight: 800;  
+  }
+  p.derecha{
+      color: $colorTerciario;  
+  }
+
+  /* Alineaciones Globales */
+  .izquierda{
+    justify-self: left;
+  }
+
+  .derecha {
+    justify-self: right;
+  }
+
+  .centro {
+    justify-self: center;
+  }
+
+  .full-width{
+      width: 100%;
+  }
+
+  /* Label */
+  mat-label{
+      font-size: 12px;
+      color: $colorTerciario;
+  }
+
+  /* Field */
+
+  .mat-form-field-appearance-outline .mat-form-field-infix{
+      padding: 0.5em 0 !important;
+      font-size: 15px;
+      color: $colorCuatro !important;
+  }
+
+  hr {
+    border: 0.1px solid $colorCinco;
+    margin-bottom: 20px;
+}
+
+.mat-form-field-wrapper {
+    padding-bottom: 1em !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0 !important;
+}
+
+.contBotonPaso{
+    display: grid;
+    grid-template-columns: 100%;
+    @include tabletLaptop(){
+        grid-template-columns: 33% 33% 33%;
+    }
+    .piepaso{
+        grid-column: 3;
+        @include Asmall(){
+            grid-column: 1/3;
+        }
+    }
+
+    .piepaso#wsp, .piepaso#mail{
+        grid-column: 1;
+    } 
+}
+
+.mat-error{
+    font-size: 10px;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.mat-stepper-horizontal, .mat-stepper-vertical {
+    background-color: transparent;
+}
+
+.mat-horizontal-stepper-header-container{
+    background-color: $colorSeis;
+    margin: 10px 0;
+    border-radius: 5px;
+    @include tabletLaptop(){
+        margin: 25px 0;
+    }
+}
+
+.mat-horizontal-content-container{
+    background-color: $colorSeis;
+    border-radius: 5px;
+    padding: 40px 20px !important;
+    @include Asmall(){
+        padding: 20px 20px !important;
+        border-radius: 10px;
+        border: solid 1px #d7d7d7;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 7px #d7d7d7;
+        height: auto;
+    }
+}
+
+
+.mat-form-field-appearance-outline .mat-form-field-outline{
+    background-color: white;
+    border-radius: 3px;
+}
+
+select.mat-input-element:not(:disabled) {
+    font-size: 12px !important;
+}
+
+.noBig{
+    @include tabletLaptop{
+        display: none;
+    }
+    @include laptopDesktop{
+        display: none;
+    }
+    @include desktopFull{
+        display: none;
+    }
+    @include full{
+        display: none;
+    }
+
+}
+
+p.inputError {
+    color: red;
+    font-size: 10px;
+    padding-left: 12px;
+}

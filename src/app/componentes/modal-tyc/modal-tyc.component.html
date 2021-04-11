@@ -1,0 +1,22 @@
+<div class="contenedor">
+    <div class="encabezado">
+        <mat-icon (click)="respuestaCalculadora.toggleMostrarModal()" class="pointer">arrow_back_ios</mat-icon>
+        <div class="titulo"><strong>TÉRMINOS Y CONDICIONES PORTAL Santander Consumer</strong></div>
+    </div>
+    <div class="contenido">
+        <div class="scrollcontenido">
+            <div *ngFor="let parrafo of const.tyc.contenido" class="parrafo">
+                <p>{{parrafo}}</p><br><br>
+            </div>
+        </div>
+    </div>
+    <div class="contBotonPaso">
+        <div class="piepaso">
+            <button
+            color="primary" 
+            mat-button 
+            (click)="respuestaCalculadora.toggleAceptaTyc()"
+            >Aceptar</button>
+        </div>  
+    </div>
+</div>

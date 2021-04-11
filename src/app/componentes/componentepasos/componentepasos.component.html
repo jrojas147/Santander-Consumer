@@ -1,0 +1,37 @@
+<div class="contenedor">
+<div class=""></div>
+    <div class="contenido">
+        <mat-horizontal-stepper [disableRipple]="true" linear>
+
+            <ng-template matStepperIcon="done" let-index="index">
+                {{index+1}}
+            </ng-template>
+            <ng-template matStepperIcon="edit" let-index="index">
+                {{index+1}}
+            </ng-template>
+
+            <mat-step label="Calcula tu cuota" class="pasoUno" [editable]="!consultaCentrales.segundoCompleto" [completed]="consultaCentrales.primeroCompleto">
+                <app-pasouno></app-pasouno>
+            </mat-step>
+
+            <mat-step label="Ingresa tus datos" class="pasoDos" [editable]="!consultaCentrales.segundoCompleto" [completed]="consultaCentrales.segundoCompleto">
+                <app-pasodos></app-pasodos>
+            </mat-step>
+
+            <mat-step label="Respuesta Inmediata" class="pasoTres">
+                <app-pasotres></app-pasotres>
+            </mat-step>
+        </mat-horizontal-stepper>
+
+        <div *ngIf="scanParams.enriquecido" class="enriquecido">
+            <h4>Obtén tu crédito y tendrás acceso a vehículos validados por Santander con los que tienes:</h4><br>
+            <ul>
+                <li><b>Tranquilidad:</b> Recibe un reporte originado con la información contenida en la base de datos RUNT para que verifiques el carro antes de elegirlo</li><br>
+                <li><b>Confianza:</b> Obtén descuento en peritaje con nuestros aliados para que evalúes el carro antes de comprarlo</li><br>
+                <li><b>Seguridad:</b> Tu dinero sólo es desembolsado al comprador cuando el vehículo esté a tu nombre</li><br>
+            </ul>
+        </div>
+    </div>
+
+<div class=""></div>
+</div>
