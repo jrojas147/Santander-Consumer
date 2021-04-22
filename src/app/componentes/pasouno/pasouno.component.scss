@@ -2,7 +2,7 @@
 @import '../../../scss/mixins';
 
 /* Radio Buttons */
-  
+
   /* style your lables/button */
   input[type="radio"] + div {
     /* keep pointer so that you get the little hand showing when you are on a button */
@@ -18,10 +18,10 @@
     grid-row: 1;
     text-align: center;
     border: none;
-  
-    
+
+
   }
-  
+
   .radio {
     input[type="radio"]:checked + div {
       /* style for the checked/selected state */
@@ -31,8 +31,8 @@
       color: white;
       border: none;
       font-weight: 800;
-  
-      
+
+
     }
   }
 
@@ -56,11 +56,11 @@
         }
     }
   }
-  
+
 .radio {
         display: grid;
         grid-template-columns: auto;
-        
+
     input {
       opacity: 0;
       grid-column: 1;
@@ -71,12 +71,12 @@
       width: 100%;
       height: 100%;
       cursor: pointer;
-    } 
-    
+    }
+
   }
 
   .contCampoDos{
-    
+
     @include tabletLaptop(){
         display: grid;
         grid-template-columns: repeat(2, auto);
@@ -84,6 +84,16 @@
         grid-column-gap: 5px;
     }
 }
+    .Mensaje_Monto{
+      font-size: 10px;
+      color: #f44336;
+      font-family: Fira Sans;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: all 0.5s;
+      vertical-align: baseline ;
+    }
 
 mat-label b{
   font-size: 13px;

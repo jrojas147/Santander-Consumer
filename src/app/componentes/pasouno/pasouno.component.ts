@@ -66,11 +66,11 @@ export class PasounoComponent {
         this.consultaCentrales.contactoCentrales.DatosBasicos.Plazo = this.aniosPeriodo(this.primero.get('periodo').value);
     });
 
-    this.primero.controls['cuotaInicial'].valueChanges.subscribe( () => { 
+    this.primero.controls['cuotaInicial'].valueChanges.subscribe( () => {
       this.makeValorTotal(this.consultaCentrales.contactoCentrales.DatosBasicos.ValorVehiculo, Number(this.primero.controls['cuotaInicial'].value));
     });
 
-    this.primero.controls['modelo'].valueChanges.subscribe( value => { 
+    this.primero.controls['modelo'].valueChanges.subscribe( value => {
       this.consultaCentrales.contactoCentrales.DatosVehiculo.Modelo = value;
     });
   }
@@ -102,22 +102,22 @@ export class PasounoComponent {
 
   aniosPeriodo( value ){
     switch (value) {
-      case 48: 
+      case 48:
         value = 4;
         break;
 
-      case 60: 
+      case 60:
         value = 5;
         break;
 
-      case 72: 
+      case 72:
         value = 6;
         break;
 
-      case 84: 
+      case 84:
         value = 7;
         break;
-    
+
       default:
         break;
     }
@@ -127,7 +127,10 @@ export class PasounoComponent {
   }
 
   get montoNoValido() {
-    return this.primero.get('monto').invalid && this.primero.get('monto').touched;
+    const test = this.primero.getRawValue();
+    if (test.monto < this.const.minimo) {
+      return true;
+    }
   }
   get precioNoValido() {
     return this.primero.get('precio').invalid && this.primero.get('precio').touched;
