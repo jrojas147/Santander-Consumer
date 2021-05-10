@@ -29,7 +29,6 @@ export class PasounoComponent {
   const = Constantes;
   porcentaje: number = 0;
   matcher = new TouchedErrorStateMatcher;
-  /* cuota: number = 0; */
 
   constructor( public formBuilder: FormBuilder, public consultaCentrales: ConsultaCentralesService, public respuestaCalculadora: RespuestaCalculadoraService ) {
     this.crearFormulario();
@@ -80,7 +79,6 @@ export class PasounoComponent {
     this.primero.controls['cuotaInicial'].setValue(this.primero.controls['precio'].value * 0.1);
     this.calculaPorcentaje();
     this.makeValorTotal(this.consultaCentrales.contactoCentrales.DatosBasicos.ValorVehiculo, this.consultaCentrales.contactoCentrales.DatosBasicos.CuotaInicial);
-
 }
 
   makeValorTotal(valorVehiculo, cuotaInicial){
@@ -121,9 +119,7 @@ export class PasounoComponent {
       default:
         break;
     }
-
     return value.toString();
-
   }
 
   get montoNoValido() {
@@ -147,5 +143,4 @@ export class PasounoComponent {
   get tipoIdNoValido() {
     return this.primero.controls['modelo'].value == 0 || this.primero.controls['modelo'].value == "";
   }
-
 }
