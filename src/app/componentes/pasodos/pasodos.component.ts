@@ -5,6 +5,9 @@ import { ConsultaCentralesService } from 'src/app/servicios/consultaCentrales.se
 import { RespuestaCalculadoraService } from 'src/app/servicios/respuestaCalculadora.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ScanparamsService } from 'src/app/servicios/scanparams.service';
+import { MatDialog } from '@angular/material';//Nvo
+import { ModalpreAprobadoComponent } from '../shared/modalpre-aprobado/modalpre-aprobado.component';//Nvo
+
 
 @Component({
   selector: 'app-pasodos',
@@ -28,7 +31,8 @@ export class PasodosComponent {
   segundo: FormGroup;
   const = Constantes;
 
-  constructor(public formBuilder: FormBuilder,
+  constructor(private dialog: MatDialog,
+              public formBuilder: FormBuilder,
               public consultaCentrales: ConsultaCentralesService,
               public respuestaCalculadora: RespuestaCalculadoraService,
               public scanparamsService: ScanparamsService
@@ -75,7 +79,7 @@ export class PasodosComponent {
   get documentoExtranjeria() {
     return this.segundo.controls['tipoDocumento'].value == 1 && this.segundo.controls['numeroDocumento'].value.length == 6 && this.segundo.get('numeroDocumento').touched;
   }
-  
+
   get celularNoValido() {
     return this.segundo.get('celular').invalid && this.segundo.get('celular').touched;
   }
@@ -112,4 +116,12 @@ export class PasodosComponent {
     });
   }
 
+  TemporalAbrir(){
+    const dialogRef = this.dialog.open(ModalpreAprobadoComponent, {
+
+    });
+    dialogRef.afterClosed().subscribe(result=>{
+      console.log('Dialog result: ${result}');
+    })
+  }
 }

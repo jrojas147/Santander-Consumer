@@ -31,6 +31,39 @@ export const Constantes = {
         {value: 2, name: 'Cédula de Extranjería'}
     ],
 
+    Estratos: [
+      {value: 'Estrato1', name: 'Estrato 1'},
+      {value: 'Estrato2', name: 'Estrato 2'},
+      {value: 'Estrato3', name: 'Estrato 3'},
+      {value: 'Estrato4', name: 'Estrato 4'},
+      {value: 'Estrato5', name: 'Estrato 5'},
+      {value: 'Estrato6', name: 'Estrato 6'}
+    ],
+
+    EstadoCivil: [
+      {value: 'Soltero', name: 'Solter@'},
+      {value: 'Casado', name: 'Casad@'},
+      {value: 'Union Libre', name: 'Union Libre'},
+      {value: 'Divorciado', name: 'Divorciado'},
+      {value: 'Viudo', name: 'Viudo'}
+    ],
+
+    TipoContrato: [
+      {value: 'Indefinido', name: 'Contrato Indefinido'},
+      {value: 'Fijo', name: 'Contrato Fijo'},
+      {value: 'Obra_Labor', name: 'Obra o Labor'},
+
+    ],
+    TipoVivienda: [
+      {value: 'Propia', name: 'Propia'},
+      {value: 'Alquilada', name: 'Alquilada'},
+      {value: 'Familiar', name: 'Familiar'},
+    ],
+    TipoActividadComercial:[
+      {value: 'Prestador_Servicios', name: 'Prestador De Servicios'},
+      {value: 'Comerciante', name: 'Comerciante'}
+    ],
+
     modelos: [
         {value:0, name:"Selecciona el modelo"},
         {value:6, name:"2010"},

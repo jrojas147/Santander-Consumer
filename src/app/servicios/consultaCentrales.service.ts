@@ -95,9 +95,9 @@ export class ConsultaCentralesService {
     const bodyT = {
       UserPass: this.const.userpass
     };
-    
+
     const body = new HttpParams({fromObject: bodyT});
-    
+
 
     return this.http.post(`${this.env.urlA}`, body, this.options)
     .subscribe((resp: any) => {

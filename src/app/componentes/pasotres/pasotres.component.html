@@ -110,13 +110,19 @@
     <hr>
     <div class="contBotonPaso">
     <div *ngIf="resultado && sendMail" [@animationFadeOut]="resultado" class="piepaso" id="mail">
-        <a href="mailto:digital@santanderconsumer.co?subject=Soy-preaprobado">
+      <button
+      color="primary"
+      mat-button
+      matStepperNext
+      (click)="procesarModal()"
+      >Enviar email</button>
+        <!-- <a href="mailto:digital@santanderconsumer.co?subject=Soy-preaprobado">
             <button
             color="primary"
             mat-button
             matStepperNext
             >Enviar email</button>
-        </a>
+        </a> -->
       </div>
     <div *ngIf="resultado && sendWhatsapp" [@animationFadeOut]="resultado" class="piepaso" id="wsp">
         <a href="https://cariai.com/santanderdigitalchannel/santanderdigitalchannel">
@@ -138,5 +144,4 @@
       </div>
       </div>
     </div>
-
 </div>

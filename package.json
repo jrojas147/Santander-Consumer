@@ -25,6 +25,7 @@
     "classlist.js": "^1.1.20150312",
     "font-awesome": "^4.7.0",
     "material-icons": "^0.3.1",
+    "moment": "^2.29.1",
     "ng2-currency-mask": "^9.0.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",

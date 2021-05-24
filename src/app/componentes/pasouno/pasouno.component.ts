@@ -5,6 +5,8 @@ import { ConsultaCentralesService } from 'src/app/servicios/consultaCentrales.se
 import { RespuestaCalculadoraService } from 'src/app/servicios/respuestaCalculadora.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { TouchedErrorStateMatcher } from '../shared/touchedErrorStateMatcher';
+import { MatDialog } from '@angular/material';//Nvo
+import { ModalpreAprobadoComponent } from '../shared/modalpre-aprobado/modalpre-aprobado.component';//Nvo
 
 @Component({
   selector: 'app-pasouno',
@@ -30,7 +32,10 @@ export class PasounoComponent {
   porcentaje: number = 0;
   matcher = new TouchedErrorStateMatcher;
 
-  constructor( public formBuilder: FormBuilder, public consultaCentrales: ConsultaCentralesService, public respuestaCalculadora: RespuestaCalculadoraService ) {
+  constructor( private dialog: MatDialog,
+               public formBuilder: FormBuilder,
+               public consultaCentrales: ConsultaCentralesService,
+               public respuestaCalculadora: RespuestaCalculadoraService) {
     this.crearFormulario();
     this.statusCambia();
    }
@@ -142,5 +147,18 @@ export class PasounoComponent {
 
   get tipoIdNoValido() {
     return this.primero.controls['modelo'].value == 0 || this.primero.controls['modelo'].value == "";
+  }
+
+  TemporalAbrir(){
+    // const dialogRef = this.dialog.open(ModalpreAprobadoComponent, {
+
+    // });
+    // dialogRef.afterClosed().subscribe(result=>{
+    //   console.log('Dialog result: ${result}');
+    // })
+
+    var formattedBody = "<h1>FirstLine<h1/> \n Second Line \n Third Line";
+  var mailToLink = "mailto:someone@example.com?body=" + encodeURIComponent(formattedBody);
+  window.location.href = mailToLink;
   }
 }

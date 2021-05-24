@@ -19,6 +19,8 @@ import { MaterialModule } from './material/material.module';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { ModalTycComponent } from './componentes/modal-tyc/modal-tyc.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalpreAprobadoComponent } from './componentes/shared/modalpre-aprobado/modalpre-aprobado.component';
+import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 registerLocaleData(localeEs, 'es');
 
@@ -31,7 +33,8 @@ registerLocaleData(localeEs, 'es');
     PasotresComponent,
     EncabezadoComponent,
     PieComponent,
-    ModalTycComponent
+    ModalTycComponent,
+    ModalpreAprobadoComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,9 @@ registerLocaleData(localeEs, 'es');
     CurrencyMaskModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es'}],
   bootstrap: [AppComponent]
