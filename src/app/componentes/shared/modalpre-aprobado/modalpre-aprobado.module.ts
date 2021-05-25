@@ -8,6 +8,7 @@ import { MatButtonModule, MatDialogModule, MatSelectModule } from '@angular/mate
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
  const imports = [
   BrowserModule,
@@ -20,7 +21,8 @@ import { CommonModule } from '@angular/common';
   ReactiveFormsModule,
   MatDialogModule,
   MatDatepickerModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  CurrencyMaskModule
  ];
 
 const providers = [];
@@ -32,5 +34,5 @@ const providers = [];
   imports: imports,
   providers: providers,
   // schemas: [NO_ERRORS_SCHEMA],
-})// en declarations y demas lo indico al nommbre que exporta el modal
-export class ModalpreaprobadoModule {}//Inidico nombre para exportar y este lo importo en app module principal
+})
+export class ModalpreaprobadoModule {}/

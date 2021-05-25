@@ -61,9 +61,6 @@ export class PasotresComponent {
           debugger;
           this.resultado = res.IdResultado;
           let respuesta = res.Resultado;
-          this.resultado = 2;
-          respuesta = 'preaprobadonosevalidoingresopormareiguanosevalidoingresoporincomeestimatorpreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack';
-          this.scanParams.enriquecido = true;
           this.cleanRespuesta(respuesta);
         });
       }
@@ -136,7 +133,7 @@ export class PasotresComponent {
       data: this.consultaCentrales.contactoCentrales
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialog result: ${result}');
+     // console.log('Dialog result: ${result}');
     })
   }
 

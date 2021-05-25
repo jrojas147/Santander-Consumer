@@ -28,11 +28,8 @@
       justify-self: center;
       font-weight: 800;
       text-align: center;
-
     }
-
 }
-
   .text-content {
     font-size: 16px;
     color: #1b1b1b;
@@ -53,7 +50,7 @@
         grid-template-rows: 1fr;
         grid-column-gap: 5px;
     }
-}
+  }
   .DatosDocumento{
     @include tabletLaptop(){
         display: grid;
@@ -111,7 +108,6 @@
       grid-template-rows: 1fr;
       grid-column-gap: 5px;
     }
-
   }
   .InformacionReferenciaPersonal{
     @include tabletLaptop(){
@@ -147,5 +143,10 @@
       }
     }
   }
-
+  // ::placeholder {
+  //   font-size:medium;
+  // }
+  .form-group{
+    font-size: small;
+  }
 }

@@ -12,6 +12,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialo
 import { Constantes } from '../../../../constantes/constantes';
 import { FormularioPreAprobadoServiceService } from '../../../servicios/FormularioPreAprobado/formulario-pre-aprobado.service.service'
 import * as moment from 'moment';
+import { format } from 'url';
 
 @Component({
   selector: 'app-modalpre-aprobado',
@@ -39,6 +40,8 @@ export class ModalpreAprobadoComponent implements OnInit {
   Independiente = false;
   resultado: number;
   messageBody: string = '';
+  maxDate = new Date();
+  MinDate = moment().subtract(80, 'year');
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -50,6 +53,7 @@ export class ModalpreAprobadoComponent implements OnInit {
   ngOnInit() {
     this.Independiente = this.data.DatosFinancieros.ActividadEconomica === 2 ? true : false;
     this.initFormulario_Empleados();
+
   }
   initFormulario_Empleados() {
     debugger;
@@ -82,31 +86,34 @@ export class ModalpreAprobadoComponent implements OnInit {
 
   onsubmit() {
     const datosFormulario = this.formulario_Empleado.value;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Fecha_Nacimiento = datosFormulario.Fecha_Nacimiento;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Lugar_Nacimiento = datosFormulario.Lugar_Nacimiento;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Fecha_Expedicion_Documento = datosFormulario.Fecha_Expedicion_Documento;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Lugar_Expedicion_Documento = datosFormulario.Lugar_Expedicion_Documento;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Numero_Personas_Cargo = datosFormulario.Numero_Personas_Cargo;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Estado_Civil = datosFormulario.Estado_Civil;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Estrato = datosFormulario.Estrato;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Direccion = datosFormulario.Direccion;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Barrio = datosFormulario.Barrio;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Ciudad = datosFormulario.Ciudad;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Tipo_Vivienda = datosFormulario.Tipo_Vivienda;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Tiempo_Laborado_Empresa = datosFormulario.Tiempo_Laborado_Empresa;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Cargo = datosFormulario.Cargo;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Tipo_Contrato = datosFormulario.Tipo_Contrato;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Tiempo_Actividad_Independinente = datosFormulario.Tiempo_Actividad_Independinente;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Tipo_Actividad_Independiente = datosFormulario.Tipo_Actividad_Independiente;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Activos = datosFormulario.Activos;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Pasivos = datosFormulario.Pasivos;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Egresos = datosFormulario.Egresos;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Nombre_Referencia_1_P = datosFormulario.Nombre_Referencia_1_P;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Contacto_Referencia_1_P = datosFormulario.Contacto_Referencia_1_P;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Nombre_Referencia_1_F = datosFormulario.Nombre_Referencia_1_F;
-    // this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Contacto_Referencia_1_F = datosFormulario.Contacto_Referencia_1_F;
-
-    this.messageBody = 'Nombre:  ' + this.data.DatosBasicos.Nombre + '\n';
+    /*//Map services
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Fecha_Nacimiento = datosFormulario.Fecha_Nacimiento;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Lugar_Nacimiento = datosFormulario.Lugar_Nacimiento;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Fecha_Expedicion_Documento = datosFormulario.Fecha_Expedicion_Documento;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Lugar_Expedicion_Documento = datosFormulario.Lugar_Expedicion_Documento;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Numero_Personas_Cargo = datosFormulario.Numero_Personas_Cargo;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Estado_Civil = datosFormulario.Estado_Civil;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Estrato = datosFormulario.Estrato;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Direccion = datosFormulario.Direccion;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Barrio = datosFormulario.Barrio;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Ciudad = datosFormulario.Ciudad;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Tipo_Vivienda = datosFormulario.Tipo_Vivienda;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Tiempo_Laborado_Empresa = datosFormulario.Tiempo_Laborado_Empresa;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Cargo = datosFormulario.Cargo;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Tipo_Contrato = datosFormulario.Tipo_Contrato;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Tiempo_Actividad_Independinente = datosFormulario.Tiempo_Actividad_Independinente;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Tipo_Actividad_Independiente = datosFormulario.Tipo_Actividad_Independiente;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Activos = datosFormulario.Activos;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Pasivos = datosFormulario.Pasivos;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Egresos = datosFormulario.Egresos;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Nombre_Referencia_1_P = datosFormulario.Nombre_Referencia_1_P;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Contacto_Referencia_1_P = datosFormulario.Contacto_Referencia_1_P;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Nombre_Referencia_1_F = datosFormulario.Nombre_Referencia_1_F;
+    this.DataFormualrioPreaprobado.dataformulario.DatosPreAprobado.Contacto_Referencia_1_F = datosFormulario.Contacto_Referencia_1_F;
+*/
+    this.messageBody = '¡Estoy a punto de cumplir mi sueño!' + '\n' + '\n';
+    this.messageBody = this.messageBody + 	'Para eso les envío los datos solicitados y la documentación requerida para obtener mi crédito vehicular:' + '\n' + '\n';
+    this.messageBody = this.messageBody + 'Nombre:  ' + this.data.DatosBasicos.Nombre + '\n';
     this.messageBody = this.messageBody + 'Tipo Documento:  ' + this.validateTypeDocument(this.data.DatosBasicos.TipoDocumento) + '\n';
     this.messageBody = this.messageBody + 'Número Documento:  ' + this.data.DatosBasicos.NumeroDocumento + '\n';
     this.messageBody = this.messageBody + 'Celular:  ' + this.data.DatosBasicos.Celular + '\n';
@@ -139,7 +146,7 @@ export class ModalpreAprobadoComponent implements OnInit {
         nameIdetificacion = 'Cedula de extrajeria';
         break;
     }
-
     return nameIdetificacion;
   }
+
 }

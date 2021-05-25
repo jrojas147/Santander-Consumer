@@ -6,10 +6,10 @@
   </div>
   <form [formGroup]="formulario_Empleado" (ngSubmit)="onsubmit()">
     <br>
-    <div id ="contenedorDividido" class="DatosNacimiento">
+    <div id="contenedorDividido" class="DatosNacimiento">
       <div class="form-group"><!--Fecha Nacimiento-->
         <mat-form-field>
-          <input matInput [matDatepicker]="FechaNacimento" placeholder="Fecha Nacimiento:" formControlName="Fecha_Nacimiento">
+          <input matInput [matDatepicker]="FechaNacimento" [max]="maxDate"  [min]="MinDate" placeholder="Fecha Nacimiento:" formControlName="Fecha_Nacimiento" >
           <mat-datepicker-toggle matSuffix [for]="FechaNacimento"></mat-datepicker-toggle>
           <mat-datepicker #FechaNacimento></mat-datepicker>
         </mat-form-field>
@@ -23,7 +23,7 @@
     <div id ="contenedorDividido" class="DatosDocumento">
       <div class="form-group"><!--Fecha Expedicion Cedula-->
         <mat-form-field>
-          <input matInput [matDatepicker]="FechaExpedicionDocumento" placeholder="Fecha Expedición Documento:" formControlName="Fecha_Expedicion_Documento">
+          <input matInput [matDatepicker]="FechaExpedicionDocumento" [max]="maxDate"  [min]="MinDate" placeholder="Fecha Expedición Documento:" formControlName="Fecha_Expedicion_Documento">
           <mat-datepicker-toggle matSuffix [for]="FechaExpedicionDocumento"></mat-datepicker-toggle>
           <mat-datepicker #FechaExpedicionDocumento></mat-datepicker>
         </mat-form-field>
@@ -46,7 +46,7 @@
       </div>
       <div class="form-group"><!--Numero Personas a cargo-->
         <mat-form-field >
-          <input type="number" matInput placeholder="N° Personas a cargo" formControlName="Numero_Personas_Cargo">
+          <input type="number" min="0" matInput placeholder="N° Personas a cargo" formControlName="Numero_Personas_Cargo">
       </mat-form-field>
       </div>
       <div class="form-group"><!--Estrato-->
@@ -79,7 +79,6 @@
       </div>
       <div class="form-group"><!--Tipo Vivienda-->
         <mat-form-field>
-          <mat-label> Tipo De Vivienda</mat-label>
           <mat-select placeholder="Tipo Vivienda" formControlName="Tipo_Vivienda">
             <mat-option *ngFor="let DataEstrato of const.TipoVivienda" [value]="DataEstrato.value">
               {{DataEstrato.name}}
@@ -102,7 +101,6 @@
         </div>
         <div class="form-group"><!--Tipo De Contrato-->
           <mat-form-field>
-            <mat-label>Tipo contrato:</mat-label>
             <mat-select placeholder="Tipo contrato" formControlName="Tipo_Contrato">
               <mat-option *ngFor="let DataEstrato of const.TipoContrato" [value]="DataEstrato.value">
                 {{DataEstrato.name}}
@@ -121,7 +119,6 @@
         </div>
         <div class="form-group"><!--Tipo De Actividad Comercial-->
           <mat-form-field>
-            <mat-label>Tipo Actividad Comercial</mat-label>
             <mat-select placeholder="Tipo actividad" formControlName="Tipo_Actividad_Independiente">
               <mat-option *ngFor="let DataEstrato of const.TipoActividadComercial" [value]="DataEstrato.value">
                 {{DataEstrato.name}}
@@ -135,33 +132,43 @@
     <div id="contenedorDividido" class="InformacionFinanciara">
       <div class="form-group"><!--Activos-->
         <mat-form-field>
-          <mat-label>Activos:</mat-label>
-          <input matInput placeholder="Ingresa tus activos" formControlName="Activos">
+          <input
+          currencyMask
+          matInput
+          [options]="{ align: 'left', prefix: '$ ', suffix: '', thousands: '.', decimal: ',', precision: 0 }"
+          placeholder="Ingresa tus activos"
+          formControlName="Activos">
         </mat-form-field>
       </div>
       <div class="form-group"><!--Pasivos-->
         <mat-form-field>
-          <mat-label>Pasivos:</mat-label>
-          <input matInput placeholder="Ingresa tus pasivos" formControlName="Pasivos">
+          <input
+          matInput
+          currencyMask
+          [options]="{ align: 'left', prefix: '$ ', suffix: '', thousands: '.', decimal: ',', precision: 0 }"
+          placeholder="Ingresa tus pasivos"
+          formControlName="Pasivos">
         </mat-form-field>
       </div>
       <div class="form-group"><!--Egresos-->
         <mat-form-field>
-          <mat-label>Egresos:</mat-label>
-          <input matInput placeholder="Ingresa tus Egresos" formControlName="Egresos">
+          <input
+          matInput
+          currencyMask
+          [options]="{ align: 'left', prefix: '$ ', suffix: '', thousands: '.', decimal: ',', precision: 0 }"
+          placeholder="Ingresa tus Egresos"
+          formControlName="Egresos">
         </mat-form-field>
       </div>
     </div>
     <div id="contenedorDividido" class="InformacionReferenciaPersonal">
       <div class="form-group"><!--Nombre Referencia-->
         <mat-form-field>
-          <mat-label>Referencia personal:</mat-label>
           <input matInput placeholder="Nombre referencia" formControlName="Nombre_Referencia_1_P">
         </mat-form-field>
       </div>
       <div class="form-group"><!--Celular Referencia-->
         <mat-form-field>
-          <mat-label>Telefono referencia peronal:</mat-label>
           <input matInput placeholder="Telefono Referecnia" formControlName="Contacto_Referencia_1_P">
         </mat-form-field>
       </div>
@@ -169,13 +176,11 @@
     <div id="contenedorDividido" class="InformacionReferenciaFamiliar">
       <div class="form-group"><!--Nombre Referencia Familiar-->
         <mat-form-field>
-          <mat-label>Referencia familiar:</mat-label>
           <input matInput placeholder="Nombre Referencia" formControlName="Nombre_Referencia_1_F">
         </mat-form-field>
       </div>
       <div class="form-group"><!--Celular Referencia-->
         <mat-form-field>
-          <mat-label>Telefono referencia familiar:</mat-label>
           <input matInput placeholder="Telefono Referencia" formControlName="Contacto_Referencia_1_F">
         </mat-form-field>
       </div>
@@ -187,10 +192,8 @@
           <button mat-button color="primary" [disabled]="formulario_Empleado.status === 'INVALID'" class="btnPrimario">
             Enviar
           </button>
-
         </div>
       </div>
-
   </form>
 </section>
 

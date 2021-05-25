@@ -149,16 +149,4 @@ export class PasounoComponent {
     return this.primero.controls['modelo'].value == 0 || this.primero.controls['modelo'].value == "";
   }
 
-  TemporalAbrir(){
-    // const dialogRef = this.dialog.open(ModalpreAprobadoComponent, {
-
-    // });
-    // dialogRef.afterClosed().subscribe(result=>{
-    //   console.log('Dialog result: ${result}');
-    // })
-
-    var formattedBody = "<h1>FirstLine<h1/> \n Second Line \n Third Line";
-  var mailToLink = "mailto:someone@example.com?body=" + encodeURIComponent(formattedBody);
-  window.location.href = mailToLink;
-  }
 }
