@@ -61,6 +61,12 @@ export class PasotresComponent {
           debugger;
           this.resultado = res.IdResultado;
           let respuesta = res.Resultado;
+
+          //test  Aprobacion
+          // this.resultado = 2;
+          // respuesta = 'preaprobadonosevalidoingresopormareiguanosevalidoingresoporincomeestimatorpreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack';
+          // this.scanParams.enriquecido = true;
+
           this.cleanRespuesta(respuesta);
         });
       }

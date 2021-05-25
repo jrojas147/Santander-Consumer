@@ -35,4 +35,4 @@ const providers = [];
   providers: providers,
   // schemas: [NO_ERRORS_SCHEMA],
 })
-export class ModalpreaprobadoModule {}/
+export class ModalpreaprobadoModule {}
