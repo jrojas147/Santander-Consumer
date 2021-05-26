@@ -62,11 +62,10 @@ export class PasotresComponent {
           this.resultado = res.IdResultado;
           let respuesta = res.Resultado;
 
-          //test  Aprobacion
-          // this.resultado = 2;
-          // respuesta = 'preaprobadonosevalidoingresopormareiguanosevalidoingresoporincomeestimatorpreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack';
-          // this.scanParams.enriquecido = true;
-
+          // //test
+          //  this.resultado = 2;
+          //  respuesta = '';
+          //  this.scanParams.enriquecido = true;
           this.cleanRespuesta(respuesta);
         });
       }
@@ -96,10 +95,17 @@ export class PasotresComponent {
       }
       if (r == 'preaprobadonosevalidoingresopormareiguanosevalidoingresoporincomeestimatorreglasmotorycapacidaddepagovalidoperopreaprobadoportipodeingreso') {
         this.variantePreaprobado = 22;
+        if(this.scanParams.enriquecido){
+          //Definir Respuesta
+        }else{
+          this.sendMail = true;
+        }
       }
       if (r == 'preaprobadopreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack') {
         this.variantePreaprobado = 23;
         if (this.scanParams.enriquecido) {
+          this.sendMail = true;
+        }else{
           this.sendWhatsapp = true;
         }
       }
@@ -107,26 +113,44 @@ export class PasotresComponent {
         this.variantePreaprobado = 24;
         if (this.scanParams.enriquecido) {
           this.sendMail = true;
+        }else{
+          this.sendMail = true;
         }
       }
       if (r == 'preaprobadosevalidoenmareiguaperonocumpleconcontinuidadlaboralreglasmotorycapacidaddepagovalidoperopreaprobadoportipodeingreso') {
         this.variantePreaprobado = 25;
         if (this.scanParams.enriquecido) {
           this.sendMail = true;
+        }else{
+          this.sendMail = true;
         }
       }
       if (r == 'preaprobadonosevalidocorreoelectroniconicelularporubica') {
         this.variantePreaprobado = 26;
         if (this.scanParams.enriquecido) {
+          this.sendMail = true;
+        }else{
           this.sendWhatsapp = true;
         }
       }
     } else {
       this.variantePreaprobado = 2;
+      if(this.scanParams.enriquecido){
+        //Definir
+      }else{
+        this.sendMail = true;
+      }
     }
 
-    if (this.scanParams.enriquecido && (this.resultado == 4 || this.resultado == 3)) {
-      this.sendWhatsapp = true;
+    if ( this.resultado == 3) {
+      if (this.scanParams.enriquecido){
+        this.sendMail = true;
+      }else{
+        this.sendWhatsapp = true;
+      }
+    }
+    if (this.resultado == 4){
+      //Definir
     }
   }
 
