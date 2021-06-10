@@ -90,12 +90,14 @@ export class PasotresComponent {
     if (r.length > 12 && this.resultado == 2) {
       if (r == 'preaprobadonosevalidoingresopormareiguanosevalidoingresoporincomeestimatorpreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack') {
         this.variantePreaprobado = 21;
-        this.sendMail = true;
+        if( this.scanParams.enriquecido){
+          this.sendMail = true;
+        }
       }
       if (r == 'preaprobadonosevalidoingresopormareiguanosevalidoingresoporincomeestimatorreglasmotorycapacidaddepagovalidoperopreaprobadoportipodeingreso') {
         this.variantePreaprobado = 22;
         if(this.scanParams.enriquecido){
-          //Definir Respuesta
+          this.sendMail = true;
         }else{
           this.sendMail = true;
         }
@@ -127,15 +129,28 @@ export class PasotresComponent {
       if (r == 'preaprobadonosevalidocorreoelectroniconicelularporubica') {
         this.variantePreaprobado = 26;
         if (this.scanParams.enriquecido) {
-          this.sendMail = true;
+          this.sendWhatsapp = true;
         }else{
+          this.sendWhatsapp = true;
+        }
+      }
+      if (r == 'preaprobadonosevalidoingresoporincomeestimatorpreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack'){
+        this.variantePreaprobado = 27;
+        if (this.scanParams.enriquecido){
+          this.sendMail = true;
+        }
+      }
+
+      if (r == 'preaprobadonosevalidoingresoporincomeestimatorreglasmotorycapacidaddepagovalidoperopreaprobadoportipodeingreso'){
+        this.variantePreaprobado = 28;
+        if (this.scanParams.enriquecido){
           this.sendWhatsapp = true;
         }
       }
     } else {
       this.variantePreaprobado = 2;
       if(this.scanParams.enriquecido){
-        //Definir
+        this.sendMail = true;
       }else{
         this.sendMail = true;
       }
