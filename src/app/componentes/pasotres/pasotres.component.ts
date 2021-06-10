@@ -58,13 +58,12 @@ export class PasotresComponent {
           }
         }
         this.consultaCentrales.respuesta(this.consultaCentrales.contactoCentrales).subscribe((res: any) => {
-          debugger;
           this.resultado = res.IdResultado;
           let respuesta = res.Resultado;
 
           // //test
           //  this.resultado = 2;
-          //  respuesta = '';
+          //  respuesta = 'preaprobadonosevalidoingresopormareiguanosevalidoingresoporincomeestimatorpreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack';
           //  this.scanParams.enriquecido = true;
           this.cleanRespuesta(respuesta);
         });

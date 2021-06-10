@@ -6,6 +6,20 @@
   font-family: Roboto;
   text-align: center;
 
+  .titulo {
+    padding-bottom: 22px;
+    text-align: center;
+  }
+
+  .texto-condiciones {
+    letter-spacing: -1px;
+
+    li {
+      padding-bottom: 6px;
+    }
+  }
+
+
   .contLogo{
     text-align: center;
     padding: 10px 0;

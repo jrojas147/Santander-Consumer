@@ -2,9 +2,6 @@ import { DatosFinancieros } from './../../../interfaces/datosFinancieros';
 import { HttpClient } from '@angular/common/http';
 import { ConsultaCentralesService } from './../../../servicios/consultaCentrales.service';
 //import { FormularioPreAprobadoServiceService } from './../../../servicios/FormularioPreAprobado/formulario-pre-aprobado.service.service';
-import { PasodosComponent } from './../../pasodos/pasodos.component';
-import { MaterialModule } from './../../../material/material.module';
-import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -12,7 +9,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialo
 import { Constantes } from '../../../../constantes/constantes';
 import { FormularioPreAprobadoServiceService } from '../../../servicios/FormularioPreAprobado/formulario-pre-aprobado.service.service'
 import * as moment from 'moment';
-import { format } from 'url';
 
 @Component({
   selector: 'app-modalpre-aprobado',
@@ -34,6 +30,7 @@ import { format } from 'url';
 })
 export class ModalpreAprobadoComponent implements OnInit {
   formulario_Empleado: FormGroup;
+  stepFinish: boolean;
   const = Constantes;
   Actividad = 'Empleado';
   Empleado = false;
@@ -47,16 +44,16 @@ export class ModalpreAprobadoComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public DataFormualrioPreaprobado: FormularioPreAprobadoServiceService,
     private fb: FormBuilder,
-    private http: HttpClient) {
-
+    private http: HttpClient
+  ) {
   }
+
   ngOnInit() {
     this.Independiente = this.data.DatosFinancieros.ActividadEconomica === 2 ? true : false;
     this.initFormulario_Empleados();
 
   }
   initFormulario_Empleados() {
-    debugger;
     this.formulario_Empleado = this.fb.group({
       Fecha_Nacimiento: new FormControl("", Validators.required),
       Lugar_Nacimiento: new FormControl("", Validators.required),
@@ -149,4 +146,7 @@ export class ModalpreAprobadoComponent implements OnInit {
     return nameIdetificacion;
   }
 
+  goToFinish() {
+    this.stepFinish = true;
+  }
 }

@@ -6,7 +6,8 @@ import { RespuestaCalculadoraService } from 'src/app/servicios/respuestaCalculad
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { TouchedErrorStateMatcher } from '../shared/touchedErrorStateMatcher';
 import { MatDialog } from '@angular/material';//Nvo
-import { ModalpreAprobadoComponent } from '../shared/modalpre-aprobado/modalpre-aprobado.component';//Nvo
+import { ModalpreAprobadoComponent } from '../shared/modalpre-aprobado/modalpre-aprobado.component';
+
 
 @Component({
   selector: 'app-pasouno',
@@ -148,5 +149,6 @@ export class PasounoComponent {
   get tipoIdNoValido() {
     return this.primero.controls['modelo'].value == 0 || this.primero.controls['modelo'].value == "";
   }
+
 
 }

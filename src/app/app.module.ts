@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalpreAprobadoComponent } from './componentes/shared/modalpre-aprobado/modalpre-aprobado.component';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
+
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
@@ -34,7 +35,8 @@ registerLocaleData(localeEs, 'es');
     EncabezadoComponent,
     PieComponent,
     ModalTycComponent,
-    ModalpreAprobadoComponent
+    ModalpreAprobadoComponent,
+
   ],
   imports: [
     BrowserModule,
