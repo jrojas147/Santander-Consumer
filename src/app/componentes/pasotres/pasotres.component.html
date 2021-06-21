@@ -24,9 +24,17 @@
             <p class="textoRespuesta">Tu solicitud no es viable en este momento.</p>
           </div>
         </div>
-        <!-- Respuesta Preaprobado enriquecido -->
+        <!-- Pre aprobado D -->
         <div
-          *ngIf="resultado == 2 && scanParams.enriquecido && (variantePreaprobado == 23 || variantePreaprobado == 26  || variantePreaprobado == 28 )">
+          *ngIf="resultado == 2 && scanParams.enriquecido && (variantePreaprobado == 2 || variantePreaprobado == 22  )">
+          <div class="contRespuesta">
+            <img [src]="const.negado" alt="">
+            <p class="tituloNegado">¡Lo sentimos!</p>
+            <p class="textoRespuesta">Tu solicitud no es viable en este momento.</p>
+          </div>
+        </div>
+        <!--Pre Aprobado B-->
+        <div *ngIf="resultado == 2 && scanParams.enriquecido && (variantePreaprobado == 23 || variantePreaprobado == 26  || variantePreaprobado == 28 )">
           <div class="contRespuesta">
             <img [src]="const.aprobado" alt="">
             <p class="tituloNegado">Aprobado
@@ -34,12 +42,13 @@
             <p class="textoRespuesta">¡Felicitaciones! Tu crédito es viable. Estás a un click de tener carro, chatea con tu asesor personalizado haciendo click en el botón o escribiéndonos vía Whatsapp a nuestra cuenta oficial +57 1 7443592.</p>
           </div>
         </div>
+        <!--Pre Aprobado C-->
         <div *ngIf="resultado == 2 && scanParams.enriquecido && (variantePreaprobado == 21 || variantePreaprobado == 24 || variantePreaprobado == 25 || variantePreaprobado == 27 )">
           <div class="contRespuesta">
             <img [src]="const.aprobado" alt="">
             <p class="tituloAprobado">
-              Aprobado
-              ¡Estás muy cerca de tener tu crédito aprobado! Para lograrlo debes enviar un correo a digital@santanderconsumer.co con los siguientes documentos:
+               Pre-Aprobado
+               ¡Estás muy cerca de tener tu crédito aprobado! Para lograrlo debes enviar un correo electrónico a digitalcanal@santanderconsumer.co con los siguientes documentos:
             </p>
               <p class="textoRespuesta">
                 Si eres empleado (a término indefinido, fijo o por obra/labor) Debes haber trabajado los últimos 12 meses, y debes enviar el/los certificado(s) que lo demuestren.
@@ -47,22 +56,6 @@
                 Si eres independiente, debes tener una trayectoria de al menos 2 años, y debes enviar Cámara de Comercio o RUT, extractos bancarios de los últimos 3 meses y 2 referencias comerciales. (Carta de tus proveedores o clientes, indicando tiempo de la relación y monto promedio de los pagos).
                 Recuerda que puedes consultar toda la documentación requerida para obtener tu crédito vehicular haciendo clic aquí. (URL: https://santanderconsumer.co/requerimientos-credito/
               </p>
-          </div>
-        </div>
-        <div
-          *ngIf="resultado == 2 && scanParams.enriquecido && (variantePreaprobado == 2 || variantePreaprobado == 22)">
-          <div class="contRespuesta">
-            <img [src]="const.aprobado" alt="">
-            <p class="tituloAprobado">
-              Aprobado
-              ¡Estás muy cerca de tener tu crédito aprobado! Para lograrlo debes enviar un correo a digital@santanderconsumer.co con los siguientes documentos:
-            </p>
-            <p class="textoRespuesta">
-              Si eres empleado (a término indefinido, fijo o por obra/labor) Debes haber trabajado los últimos 12 meses, y debes enviar el/los certificado(s) que lo demuestren.<br>
-            Si eres empleado por prestación de servicios debes haber trabajado los últimos 24 meses y debes enviar el/los contrato(s) o carta laboral y enviar los últimos 3 extractos bancarios.<br>
-            Si eres independiente, debes tener una trayectoria de al menos 2 años, y debes enviar Cámara de Comercio o RUT, extractos bancarios de los últimos 3 meses y 2 referencias comerciales. (Carta de tus proveedores o clientes, indicando tiempo de la relación y monto promedio de los pagos).<br>
-            Recuerda que puedes consultar toda la documentación requerida para obtener tu crédito vehicular haciendo clic aquí. (URL: https://santanderconsumer.co/requerimientos-credito/
-            </p>
           </div>
         </div>
         <!-- Respuesta Preaprobado No enriquecido -->
@@ -89,7 +82,7 @@
               proveedores o clientes indicando tiempo de la relación y monto promedio de los pagos)</p>
           </div>
         </div>
-        <!--  -->
+        <!--aprobado no enriquecido -->
         <div *ngIf="resultado == 3 && !scanParams.enriquecido">
           <!-- Aprobado con documentos -->
           <div class="contRespuesta">
@@ -99,32 +92,14 @@
               de crédito.</p>
           </div>
         </div>
+        <!-- Aprobado enriquecido -->
         <div *ngIf="resultado == 3 && scanParams.enriquecido">
-          <!-- Aprobado con documentos -->
           <div class="contRespuesta">
             <img [src]="const.aprobado" alt="">
             <p class="tituloAprobado">¡Tu solicitud es viable!</p>
             <p class="textoRespuesta">¡Felicitaciones! Tu crédito es viable. Estás a un click de tener carro, chatea con
               tu asesor personalizado haciendo click en el botón o escribiéndonos vía Whatsapp a nuestra cuenta oficial
               +57 1 7443592</p>
-          </div>
-        </div>
-        <div *ngIf="resultado == 4 && !scanParams.enriquecido">
-          <!-- Aprobado sin documentos -->
-          <div class="contRespuesta">
-            <img [src]="const.aprobado" alt="">
-            <p class="tituloAprobado">Tu solicitud ya está en proceso</p>
-            <p class="textoRespuesta">Pronto uno de nuestros asesores te llamara para acompañarte hasta que tengas tu
-              vehículo.</p>
-          </div>
-        </div>
-        <div *ngIf="resultado == 4 && scanParams.enriquecido">
-          <!-- Aprobado sin documentos -->
-          <div class="contRespuesta">
-            <img [src]="const.aprobado" alt="">
-            <p class="tituloAprobado">Tu solicitud ya está en proceso</p>
-            <p class="textoRespuesta">Chatea con tu asesor personalizado haciendo click en el botón o escribiéndonos vía
-              Whatsapp a nuestra cuenta oficial +57 1 7443592</p>
           </div>
         </div>
       </div>

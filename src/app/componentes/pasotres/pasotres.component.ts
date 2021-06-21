@@ -97,7 +97,7 @@ export class PasotresComponent {
       if (r == 'preaprobadonosevalidoingresopormareiguanosevalidoingresoporincomeestimatorreglasmotorycapacidaddepagovalidoperopreaprobadoportipodeingreso') {
         this.variantePreaprobado = 22;
         if(this.scanParams.enriquecido){
-          this.sendMail = true;
+
         }else{
           this.sendMail = true;
         }
@@ -105,7 +105,7 @@ export class PasotresComponent {
       if (r == 'preaprobadopreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack') {
         this.variantePreaprobado = 23;
         if (this.scanParams.enriquecido) {
-          this.sendMail = true;
+          this.sendWhatsapp = true;
         }else{
           this.sendWhatsapp = true;
         }
@@ -150,21 +150,17 @@ export class PasotresComponent {
     } else {
       this.variantePreaprobado = 2;
       if(this.scanParams.enriquecido){
-        this.sendMail = true;
+
       }else{
         this.sendMail = true;
       }
     }
-
     if ( this.resultado == 3) {
       if (this.scanParams.enriquecido){
-        this.sendMail = true;
-      }else{
         this.sendWhatsapp = true;
+      }else{
+
       }
-    }
-    if (this.resultado == 4){
-      //Definir
     }
   }
 
