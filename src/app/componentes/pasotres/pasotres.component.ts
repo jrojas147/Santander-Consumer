@@ -140,7 +140,6 @@ export class PasotresComponent {
           this.sendMail = true;
         }
       }
-
       if (r == 'preaprobadonosevalidoingresoporincomeestimatorreglasmotorycapacidaddepagovalidoperopreaprobadoportipodeingreso'){
         this.variantePreaprobado = 28;
         if (this.scanParams.enriquecido){
