@@ -46,14 +46,14 @@
           <div class="contRespuesta">
             <img [src]="const.aprobado" alt="">
             <p class="tituloAprobado">
-               Pre-Aprobado
+               Pre-Aprobado<br>
                ¡Estás muy cerca de tener tu crédito aprobado! Para lograrlo debes enviar un correo electrónico a digitalcanal@santanderconsumer.co con los siguientes documentos:
             </p>
               <p class="textoRespuesta">
                 Si eres empleado (a término indefinido, fijo o por obra/labor) Debes haber trabajado los últimos 12 meses, y debes enviar el/los certificado(s) que lo demuestren.
                 Si eres empleado por prestación de servicios debes haber trabajado los últimos 24 meses y debes enviar el/los contrato(s) o carta laboral y enviar los últimos 3 extractos bancarios.
                 Si eres independiente, debes tener una trayectoria de al menos 2 años, y debes enviar Cámara de Comercio o RUT, extractos bancarios de los últimos 3 meses y 2 referencias comerciales. (Carta de tus proveedores o clientes, indicando tiempo de la relación y monto promedio de los pagos).
-                Recuerda que puedes consultar toda la documentación requerida para obtener tu crédito vehicular haciendo clic aquí. (URL: https://santanderconsumer.co/requerimientos-credito/
+                Recuerda que puedes consultar toda la documentación requerida para obtener tu crédito vehicular haciendo clic aquí<a href="https://santanderconsumer.co/requerimientos-credito/">https://santanderconsumer.co/requerimientos-credito/</a>
               </p>
           </div>
         </div>
@@ -104,7 +104,7 @@
     <hr>
     <div class="contBotonPaso">
       <div *ngIf="resultado && sendMail" [@animationFadeOut]="resultado" class="piepaso" id="mail">
-        <button color="primary" mat-button matStepperNext (click)="procesarModal()">Diligenciar Daatos</button>
+        <button color="primary" mat-button matStepperNext (click)="procesarModal()">Diligenciar Datos</button>
       </div>
       <div *ngIf="resultado && sendWhatsapp" [@animationFadeOut]="resultado" class="piepaso" id="wsp">
         <a href="https://cariai.com/santanderdigitalchannel/santanderdigitalchannel">
