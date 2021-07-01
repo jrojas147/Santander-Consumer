@@ -62,9 +62,9 @@ export class PasotresComponent {
           let respuesta = res.Resultado;
 
           // //test
-            // this.resultado = 2;
-            // respuesta = 'preaprobadonosevalidoingresopormareiguanosevalidoingresoporincomeestimatorpreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack';
-            // this.scanParams.enriquecido = true;
+             this.resultado = 2;
+             respuesta = 'preaprobadonosevalidoingresopormareiguanosevalidoingresoporincomeestimatorpreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack';
+             this.scanParams.enriquecido = true;
           this.cleanRespuesta(respuesta);
         });
       }
