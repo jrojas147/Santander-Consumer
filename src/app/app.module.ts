@@ -1,3 +1,4 @@
+import { ModalpreaprobadoModule } from './componentes/shared/modalpre-aprobado/modalpre-aprobado.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -51,6 +52,7 @@ registerLocaleData(localeEs, 'es');
     MatNativeDateModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es'}],
+  //entryComponents: [ModalpreaprobadoModule],//Adiciinaol
   bootstrap: [AppComponent]
 })
 export class AppModule { }
