@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ConsultaCentralesService } from 'src/app/servicios/consultaCentrales.service';
 import { RespuestaCalculadoraService } from 'src/app/servicios/respuestaCalculadora.service';
 import { Constantes } from 'src/constantes/constantes';
@@ -6,6 +6,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { ScanparamsService } from 'src/app/servicios/scanparams.service';
 import { MatDialog } from '@angular/material';//Nvo
 import { ModalpreAprobadoComponent } from '../shared/modalpre-aprobado/modalpre-aprobado.component';//Nvo
+import { ModalRespuestaComponent } from '../shared/modal-respuesta/modal-respuesta.component';
 
 @Component({
   selector: 'app-pasotres',
@@ -24,13 +25,14 @@ import { ModalpreAprobadoComponent } from '../shared/modalpre-aprobado/modalpre-
     ])
   ]
 })
-export class PasotresComponent {
+export class PasotresComponent implements OnInit{
 
   resultado: number;
   variantePreaprobado: number;
   sendMail;
   sendWhatsapp;
   const = Constantes;
+  letraMensaje: string;
 
   constructor(private dialog: MatDialog,
     public consultaCentrales: ConsultaCentralesService,
@@ -38,6 +40,8 @@ export class PasotresComponent {
     public scanParams: ScanparamsService
   ) {
     this.viabilizar();
+  }
+  ngOnInit(): void {
   }
 
   viabilizar() {
@@ -58,115 +62,43 @@ export class PasotresComponent {
           }
         }
         this.consultaCentrales.respuesta(this.consultaCentrales.contactoCentrales).subscribe((res: any) => {
+          debugger;
           this.resultado = res.IdResultado;
           let respuesta = res.Resultado;
-
-          // //test
-             this.resultado = 2;
-             respuesta = 'preaprobadonosevalidoingresopormareiguanosevalidoingresoporincomeestimatorpreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack';
-             this.scanParams.enriquecido = true;
-          this.cleanRespuesta(respuesta);
+          let letraMensaje = res.ResultadoLetra;//Nuevo
+            //test
+            // this.letraMensaje = 'C';
+            // this.scanParams.enriquecido = true;
+            // this.AccionMensaje('C');
+          this.AccionMensaje(letraMensaje);
         });
       }
     });
-
   }
 
-  cleanRespuesta(respuesta) {
-    let r = respuesta.toLowerCase();
-    r = r.replace(new RegExp("\\s", 'g'), "");
-    r = r.replace(new RegExp("[àáâãäå]", 'g'), "a");
-    r = r.replace(new RegExp("æ", 'g'), "ae");
-    r = r.replace(new RegExp("ç", 'g'), "c");
-    r = r.replace(new RegExp("[èéêë]", 'g'), "e");
-    r = r.replace(new RegExp("[ìíîï]", 'g'), "i");
-    r = r.replace(new RegExp("ñ", 'g'), "n");
-    r = r.replace(new RegExp("[òóôõö]", 'g'), "o");
-    r = r.replace(new RegExp("œ", 'g'), "oe");
-    r = r.replace(new RegExp("[ùúûü]", 'g'), "u");
-    r = r.replace(new RegExp("[ýÿ]", 'g'), "y");
-    r = r.replace(new RegExp("\\W", 'g'), "");
-
-    if (r.length > 12 && this.resultado == 2) {
-      if (r == 'preaprobadonosevalidoingresopormareiguanosevalidoingresoporincomeestimatorpreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack') {
-        this.variantePreaprobado = 21;
-        if( this.scanParams.enriquecido){
-          this.sendMail = true;
-        }
+  AccionMensaje(letraMensaje){
+    if (letraMensaje === 'A') {
+      if (this.scanParams.enriquecido == true){
+        this.sendWhatsapp = true;
       }
-      if (r == 'preaprobadonosevalidoingresopormareiguanosevalidoingresoporincomeestimatorreglasmotorycapacidaddepagovalidoperopreaprobadoportipodeingreso') {
-        this.variantePreaprobado = 22;
-        if(this.scanParams.enriquecido){
-
-        }else{
-          this.sendMail = true;
-        }
+      this.procesarRespuesta();
+    }
+    if (letraMensaje === 'B') {
+      if (this.scanParams.enriquecido == true ){
+        this.sendWhatsapp = true;
       }
-      if (r == 'preaprobadopreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack') {
-        this.variantePreaprobado = 23;
-        if (this.scanParams.enriquecido) {
-          this.sendWhatsapp = true;
-        }else{
-          this.sendWhatsapp = true;
-        }
-      }
-      if (r == 'preaprobadosevalidoenmareiguaperonocumpleconcontinuidadlaboralpreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack') {
-        this.variantePreaprobado = 24;
-        if (this.scanParams.enriquecido) {
-          this.sendMail = true;
-        }else{
-          this.sendMail = true;
-        }
-      }
-      if (r == 'preaprobadosevalidoenmareiguaperonocumpleconcontinuidadlaboralreglasmotorycapacidaddepagovalidoperopreaprobadoportipodeingreso') {
-        this.variantePreaprobado = 25;
-        if (this.scanParams.enriquecido) {
-          this.sendMail = true;
-        }else{
-          this.sendMail = true;
-        }
-      }
-      if (r == 'preaprobadonosevalidocorreoelectroniconicelularporubica') {
-        this.variantePreaprobado = 26;
-        if (this.scanParams.enriquecido) {
-          this.sendWhatsapp = true;
-        }else{
-          this.sendWhatsapp = true;
-        }
-      }
-      if (r == 'preaprobadonosevalidoingresoporincomeestimatorpreaprobadoporvalidacionreglasmotorcapacidaddepagoyobanconoaplicaparafasttrack'){
-        this.variantePreaprobado = 27;
-        if (this.scanParams.enriquecido){
-          this.sendMail = true;
-        }
-      }
-      if (r == 'preaprobadonosevalidoingresoporincomeestimatorreglasmotorycapacidaddepagovalidoperopreaprobadoportipodeingreso'){
-        this.variantePreaprobado = 28;
-        if (this.scanParams.enriquecido){
-          this.sendWhatsapp = true;
-        }
-      }
-    } else {
-      this.variantePreaprobado = 2;
-      if(this.scanParams.enriquecido){
-
-      }else{
+      this.procesarRespuesta();
+    }
+    if (letraMensaje === 'C' ) {
+      if( this.scanParams.enriquecido == true){
         this.sendMail = true;
       }
-    }
-    if ( this.resultado == 3) {
-      if (this.scanParams.enriquecido){
-        this.sendWhatsapp = true;
-      }else{
-
-      }
+      this.procesarRespuesta();
     }
   }
-
   gotoReferrer() {
     window.location.href = this.consultaCentrales.linkOrigen;
   }
-
   procesarModal() {
     const dialogRef = this.dialog.open(ModalpreAprobadoComponent, {
       data: this.consultaCentrales.contactoCentrales
@@ -176,6 +108,17 @@ export class PasotresComponent {
     })
   }
 
+  procesarRespuesta(){
+    const dialogRef = this.dialog.open(ModalRespuestaComponent, {
+      data:  {
+        sentEmail: this.sendMail,
+        sendWhatsapp: this.sendWhatsapp
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+     // console.log('Dialog result: ${result}');
+    })
+  }
 }
 
 

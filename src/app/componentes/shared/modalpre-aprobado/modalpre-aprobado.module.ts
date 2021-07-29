@@ -9,6 +9,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { MaterialModule } from 'src/app/material/material.module';
 
  const imports = [
   BrowserModule,
@@ -22,7 +23,8 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
   MatDialogModule,
   MatDatepickerModule,
   MatCheckboxModule,
-  CurrencyMaskModule
+  CurrencyMaskModule,
+  MaterialModule
  ];
 
 const providers = [];

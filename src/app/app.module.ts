@@ -20,8 +20,10 @@ import { MaterialModule } from './material/material.module';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { ModalTycComponent } from './componentes/modal-tyc/modal-tyc.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ModalpreAprobadoComponent } from './componentes/shared/modalpre-aprobado/modalpre-aprobado.component';
+// import { ModalpreAprobadoComponent } from './componentes/shared/modalpre-aprobado/modalpre-aprobado.component';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { ModalRespuestaComponent } from './componentes/shared/modal-respuesta/modal-respuesta.component';
+import { ModalRespuestaModule } from './componentes/shared/modal-respuesta/modal-respuesta.module';
 
 
 registerLocaleData(localeEs, 'es');
@@ -36,7 +38,8 @@ registerLocaleData(localeEs, 'es');
     EncabezadoComponent,
     PieComponent,
     ModalTycComponent,
-    ModalpreAprobadoComponent,
+    // ModalpreaprobadoModule,
+    //ModalRespuestaComponent
 
   ],
   imports: [
@@ -47,6 +50,8 @@ registerLocaleData(localeEs, 'es');
     CurrencyMaskModule,
     FormsModule,
     ReactiveFormsModule,
+    ModalpreaprobadoModule,
+    ModalRespuestaModule,
     HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,

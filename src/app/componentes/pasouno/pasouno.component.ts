@@ -7,6 +7,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { TouchedErrorStateMatcher } from '../shared/touchedErrorStateMatcher';
 import { MatDialog } from '@angular/material';//Nvo
 import { ModalpreAprobadoComponent } from '../shared/modalpre-aprobado/modalpre-aprobado.component';
+import { ModalRespuestaComponent } from '../shared/modal-respuesta/modal-respuesta.component';
 
 
 @Component({
@@ -149,6 +150,12 @@ export class PasounoComponent {
   get tipoIdNoValido() {
     return this.primero.controls['modelo'].value == 0 || this.primero.controls['modelo'].value == "";
   }
-
+  procesarRespuesta(){
+    const dialogRef = this.dialog.open(ModalRespuestaComponent, {
+    });
+    dialogRef.afterClosed().subscribe(result => {
+     // console.log('Dialog result: ${result}');
+    })
+  }
 
 }
