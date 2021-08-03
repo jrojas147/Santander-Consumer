@@ -62,14 +62,13 @@ export class PasotresComponent implements OnInit{
           }
         }
         this.consultaCentrales.respuesta(this.consultaCentrales.contactoCentrales).subscribe((res: any) => {
-          debugger;
           this.resultado = res.IdResultado;
           let respuesta = res.Resultado;
           let letraMensaje = res.ResultadoLetra;//Nuevo
             //test
-            // this.letraMensaje = 'C';
-            // this.scanParams.enriquecido = true;
-            // this.AccionMensaje('C');
+            //  this.letraMensaje = 'C';
+            //  this.scanParams.enriquecido = true;
+            //  this.AccionMensaje('C');
           this.AccionMensaje(letraMensaje);
         });
       }
