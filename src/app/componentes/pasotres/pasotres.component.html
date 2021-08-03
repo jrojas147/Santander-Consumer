@@ -21,7 +21,7 @@
         <div *ngIf="letraMensaje === 'B' && scanParams.enriquecido">
           <div class="contRespuesta">
             <img [src]="const.aprobado" alt="">
-            <p class="tituloNegado">Aprobado
+            <p class="tituloAprobado">Aprobado
               Tu Solicitud es viable</p>
             <p class="textoRespuesta">¡Felicitaciones! Tu crédito es viable. Estás a un click de tener carro, chatea con tu asesor personalizado haciendo click en el botón o escribiéndonos vía Whatsapp a nuestra cuenta oficial +57 1 7443592.</p>
           </div>
@@ -61,6 +61,10 @@
       </div>
     </div>
     <hr>
+    <div *ngIf="resultado" [@animationFadeOut]="resultado" class="piepaso">
+      <button color="primary" id="finalizar" (click)="gotoReferrer()" mat-button matStepperNext>FINALIZAR<mat-icon>
+          arrow_right_icon</mat-icon></button>
+    </div>
      <!-- <div class="contBotonPaso">
       <div *ngIf="resultado && sendMail" [@animationFadeOut]="resultado" class="piepaso" id="mail">
         <button color="primary" mat-button matStepperNext (click)="procesarModal()">Diligenciar Datos</button>
@@ -73,9 +77,7 @@
       <div *ngIf="resultado" [@animationFadeOut]="resultado" class="piepaso">
         <button color="primary" id="finalizar" (click)="gotoReferrer()" mat-button matStepperNext>FINALIZAR<mat-icon>
             arrow_right_icon</mat-icon></button>
-
       </div>
-      <button (click)="procesarRespuesta()">respuesta</button>
     </div> -->
   </div>
 </div>

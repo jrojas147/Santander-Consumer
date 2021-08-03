@@ -2,7 +2,6 @@ import { Constantes } from './../../../../constantes/constantes';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ConsultaCentralesService } from 'src/app/servicios/consultaCentrales.service';
-import { PasotresComponent } from '../../pasotres/pasotres.component';
 import { ModalpreAprobadoComponent } from '../modalpre-aprobado/modalpre-aprobado.component';
 
 
@@ -13,34 +12,35 @@ import { ModalpreAprobadoComponent } from '../modalpre-aprobado/modalpre-aprobad
 })
 export class ModalRespuestaComponent implements OnInit {
   const = Constantes;
-  sendMail:boolean =  false;
-  sendWhatsapp:boolean = true;
-  TituloMensaje: string;
+  TituloMensaje: string = 'Estas a punto de cumplir tus sueños';
   BodyMensaje: string;
-
-  MensajeTitulo:string = 'Estas a punto de cumplir tus sueños';
-  MensajeChat:string = 'Te estamos contactando con nuestro asesor mediante whatsapp';
-  MensajeEmail:string = 'Para finalizar solo tienes que diligenciar el siguiente formato. Te estaremos contactando pronto';
-
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialog: MatDialog,
     public consultaCentrales: ConsultaCentralesService,
-   // public pasotress: PasotresComponent,//Nuevo
     public dialogRef: MatDialogRef<ModalRespuestaComponent>,
   ) {
+   // dialogRef.disableClose = true;
     }
 
     ngOnInit() {
-      //console.log(this.data)
+      if (this.data.sentEmail){
+        this.BodyMensaje = 'Para finalizar solo tienes que diligenciar el siguiente formato. Te estaremos contactando pronto';
+      }
+      if (this.data.sendWhatsapp){
+        this.BodyMensaje = 'Te estamos contactando con nuestro asesor mediante whatsapp';
+      }
       this.directWhatsapp();
     }
 
   procesarModal() {
     const dialogRef = this.dialog.open(ModalpreAprobadoComponent, {
       data: this.consultaCentrales.contactoCentrales
-    });
+    },
+
+
+    );
     dialogRef.afterClosed().subscribe(result => {
      // console.log('Dialog result: ${result}');
     })

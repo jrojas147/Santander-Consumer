@@ -64,10 +64,10 @@ export class PasotresComponent implements OnInit{
         this.consultaCentrales.respuesta(this.consultaCentrales.contactoCentrales).subscribe((res: any) => {
           this.resultado = res.IdResultado;
           let respuesta = res.Resultado;
-          let letraMensaje = res.ResultadoLetra;//Nuevo
+          let letraMensaje = res.ResultadoLetra;
             //test
-            //  this.letraMensaje = 'E';
-            //  this.scanParams.enriquecido = true;
+              // this.letraMensaje = 'B';
+              // this.scanParams.enriquecido = true;
 
           this.AccionMensaje(this.letraMensaje);
         });
@@ -112,12 +112,19 @@ export class PasotresComponent implements OnInit{
       data:  {
         sentEmail: this.sendMail,
         sendWhatsapp: this.sendWhatsapp
-      }
+      },
+    //  disableClose: true
     });
     dialogRef.afterClosed().subscribe(result => {
      // console.log('Dialog result: ${result}');
     })
   }
+
+  // cerrarModal(){
+  //   this.dialogRef.close();
+  // }
+
+
 }
 
 
