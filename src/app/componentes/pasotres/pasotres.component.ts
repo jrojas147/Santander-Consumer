@@ -66,10 +66,10 @@ export class PasotresComponent implements OnInit{
           let respuesta = res.Resultado;
           let letraMensaje = res.ResultadoLetra;//Nuevo
             //test
-            //  this.letraMensaje = 'C';
+            //  this.letraMensaje = 'E';
             //  this.scanParams.enriquecido = true;
-            //  this.AccionMensaje('C');
-          this.AccionMensaje(letraMensaje);
+
+          this.AccionMensaje(this.letraMensaje);
         });
       }
     });

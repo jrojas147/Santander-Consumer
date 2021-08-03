@@ -15,6 +15,8 @@ export class ModalRespuestaComponent implements OnInit {
   const = Constantes;
   sendMail:boolean =  false;
   sendWhatsapp:boolean = true;
+  TituloMensaje: string;
+  BodyMensaje: string;
 
   MensajeTitulo:string = 'Estas a punto de cumplir tus sueños';
   MensajeChat:string = 'Te estamos contactando con nuestro asesor mediante whatsapp';
