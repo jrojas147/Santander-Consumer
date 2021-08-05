@@ -20,10 +20,11 @@ import { MaterialModule } from './material/material.module';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { ModalTycComponent } from './componentes/modal-tyc/modal-tyc.component';
 import { HttpClientModule } from '@angular/common/http';
-// import { ModalpreAprobadoComponent } from './componentes/shared/modalpre-aprobado/modalpre-aprobado.component';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { ModalRespuestaComponent } from './componentes/shared/modal-respuesta/modal-respuesta.component';
 import { ModalRespuestaModule } from './componentes/shared/modal-respuesta/modal-respuesta.module';
+import { ModalComponent } from './componentes/shared/modal/modal.component';
+import { ModalModule } from './componentes/shared/modal/modal.module';
 
 
 registerLocaleData(localeEs, 'es');
@@ -38,8 +39,6 @@ registerLocaleData(localeEs, 'es');
     EncabezadoComponent,
     PieComponent,
     ModalTycComponent,
-    // ModalpreaprobadoModule,
-    //ModalRespuestaComponent
 
   ],
   imports: [
@@ -52,12 +51,12 @@ registerLocaleData(localeEs, 'es');
     ReactiveFormsModule,
     ModalpreaprobadoModule,
     ModalRespuestaModule,
+    ModalModule,
     HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es'}],
-  //entryComponents: [ModalpreaprobadoModule],//Adiciinaol
   bootstrap: [AppComponent]
 })
 export class AppModule { }

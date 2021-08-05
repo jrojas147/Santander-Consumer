@@ -1,0 +1,10 @@
+<section class="section-modal">
+  <div class="encabezado">
+    <img [src]="const.cliente" alt="">
+    <div class="titulo">{{datapersonal.Titulo}}</div>
+  </div>
+  <div class="body">{{datapersonal.Mensaje}}</div>
+  <div class="pie">
+    <button mat-button color="primary" (click)="cerrar()">Salir</button>
+  </div>
+</section>

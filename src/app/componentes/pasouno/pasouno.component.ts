@@ -8,6 +8,7 @@ import { TouchedErrorStateMatcher } from '../shared/touchedErrorStateMatcher';
 import { MatDialog } from '@angular/material';//Nvo
 import { ModalpreAprobadoComponent } from '../shared/modalpre-aprobado/modalpre-aprobado.component';
 import { ModalRespuestaComponent } from '../shared/modal-respuesta/modal-respuesta.component';
+import { ModalComponent } from '../shared/modal/modal.component';
 
 
 @Component({
@@ -33,6 +34,9 @@ export class PasounoComponent {
   const = Constantes;
   porcentaje: number = 0;
   matcher = new TouchedErrorStateMatcher;
+
+  ////////////
+
 
   constructor( private dialog: MatDialog,
                public formBuilder: FormBuilder,
@@ -156,6 +160,18 @@ export class PasounoComponent {
     dialogRef.afterClosed().subscribe(result => {
      // console.log('Dialog result: ${result}');
     })
+  }
+
+  ejecutarModal(){
+    const  dialogRef = this.dialog.open(ModalComponent, {
+      data: {
+         name : 'Joan Rojas',
+         cargo : 'Desarollador Web'
+      },
+      height: '400px',
+      width: '600px',
+    });
+
   }
 
 }
