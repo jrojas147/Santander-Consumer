@@ -38,8 +38,6 @@ export class ModalRespuestaComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalpreAprobadoComponent, {
       data: this.consultaCentrales.contactoCentrales
     },
-
-
     );
     dialogRef.afterClosed().subscribe(result => {
      // console.log('Dialog result: ${result}');

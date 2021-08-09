@@ -33,10 +33,17 @@ export class PasotresComponent implements OnInit{
 
   resultado: number;
   variantePreaprobado: number;
-  sendMail;
-  sendWhatsapp;
+  sendMail: boolean;
+  sendWhatsapp: boolean;
   const = Constantes;
   letraMensaje: string;
+  TituloModRespuesta: string;
+  MensajeModRespuesta: string;
+  VarianteAprobado: string;
+  TipoModal: string;
+  RespuestaModalRespuesta: any;
+  dialogRef: any;
+  ejecutarFormularioPreaprobado: boolean = false;
 
   constructor(private dialog: MatDialog,
     public consultaCentrales: ConsultaCentralesService,
@@ -46,7 +53,6 @@ export class PasotresComponent implements OnInit{
     this.viabilizar();
   }
   ngOnInit(): void {
-
   }
 
   viabilizar() {
@@ -70,42 +76,82 @@ export class PasotresComponent implements OnInit{
           this.resultado = res.IdResultado;
           let respuesta = res.Resultado;
           let letraMensaje = res.ResultadoLetra;
-            //test
-              //  this.letraMensaje = 'C';
-              //  this.scanParams.enriquecido = true;
-
           this.AccionMensaje(letraMensaje);
+
+            //test
+              // this.letraMensaje = 'C';
+              // this.scanParams.enriquecido = true;
+              // this.AccionMensaje(this.letraMensaje);
         });
       }
     });
   }
 
   AccionMensaje(letraMensaje){
-    let VarianteAprobado: String
     if (letraMensaje === 'A') {
       if (this.scanParams.enriquecido == true){
         this.sendWhatsapp = true;
+        this.VarianteAprobado = 'sendWhatsapp';
+        this.validarTituloModalRespuesta();
+        this.procesarModalRespuesta();
       }
-      this.procesarRespuesta();
     }
     if (letraMensaje === 'B') {
       if (this.scanParams.enriquecido == true ){
         this.sendWhatsapp = true;
-        // VarianteAprobado = 'sendWhatsapp';
+        this.VarianteAprobado = 'sendWhatsapp';
+        this.validarTituloModalRespuesta();
+        this.procesarModalRespuesta();
       }
-      this.procesarRespuesta();
     }
     if (letraMensaje === 'C' ) {
       if( this.scanParams.enriquecido == true){
         this.sendMail = true;
-        // VarianteAprobado = 'sendMail';
+         this.VarianteAprobado = 'sendMail';
+         this.validarTituloModalRespuesta();
+         this.procesarModalRespuesta();
+
       }
-      this.procesarRespuesta();
-      // this.validarTitulo;
     }
   }
+
   gotoReferrer() {
     window.location.href = this.consultaCentrales.linkOrigen;
+  }
+
+  validarTituloModalRespuesta():void{
+    if ( this.VarianteAprobado =='sendMail' ){
+      this.TituloModRespuesta = 'Credito Prea-probado, estas a punto de cumplir tus sueños';
+      this.MensajeModRespuesta = 'Para finalizar solo tienes que diligenciar el siguiente formato. Te estaremos contactando pronto';
+    }
+    if ( this.VarianteAprobado =='sendWhatsapp' ){
+      this.TituloModRespuesta = 'Credito Prea-probado, estas a punto de cumplir tus sueños';
+      this.MensajeModRespuesta = 'Te estamos contactando con nuestro asesor mediante whatsapp';
+    }
+  }
+
+  procesarModalRespuesta(): void{
+    const dialogRef =this.dialog.open(ModalComponent, {
+      data: {
+      datacentrales : this.consultaCentrales.contactoCentrales,
+      Titulo: this.TituloModRespuesta,
+      Mensaje: this.MensajeModRespuesta,
+      sentEmail: this.sendMail,
+      sendWhatsapp: this.sendWhatsapp,
+      tipoModal: 'Generico',
+      ejecutarFormularioPreaprobado: this.ejecutarFormularioPreaprobado
+      },
+      disableClose : true,
+      height: '300px',
+      width: '490px',
+    });
+    debugger;
+    dialogRef.afterClosed().subscribe(result  =>{
+      console.log(`Ejecutar formulario preaprobado ${result}`)
+      if(result === true){
+        this.procesarModalPreaprobado();
+      }
+    })
   }
 
   procesarModalPreaprobado(){
@@ -113,69 +159,35 @@ export class PasotresComponent implements OnInit{
       data: {
         datacentrales : this.consultaCentrales.contactoCentrales,
         Titulo: 'Formulario Pre-Aprobado',
-        Mensaje: "Falta poco, Ingresa tus datos para finalizar"
-
+        Mensaje: "Falta poco, Ingresa tus datos para finalizar",
+        tipoModal: 'FormularioPreAprobado',
       },
-      height: '300px',
-      width: '380px'
-    });
-    dialogRef.afterClosed().subscribe(res  =>{
-      console.log(res);
+      disableClose : true,
+      height: '700px',
+      width: '680px',
 
+    });
+    dialogRef.disableClose = true,
+    dialogRef.afterClosed().subscribe(result  =>{
+      console.log(result);
     })
   }
 
-  validarTitulo( VarianteAprobado ) :string {
-    let tituloRespuesta;
-    if(VarianteAprobado == 'sendMail'){
-      tituloRespuesta : 'Para finalizar solo tienes que diligenciar el siguiente formato. Te estaremos contactando pronto';
-    }
-    if(VarianteAprobado == 'sendWhatsapp'){
-      tituloRespuesta = 'Te estamos contactando con nuestro asesor mediante whatsapp';
-    }
-    return tituloRespuesta
-  }
-
-  procesarModalRespuesta(){
+  procesarModalConfirmacionSalir(){
     const dialogRef =this.dialog.open(ModalComponent, {
       data: {
-        datacentrales : this.consultaCentrales.contactoCentrales,
-      tituloRespuesta : 'Para finalizar solo tienes que diligenciar el siguiente formato. Te estaremos contactando pronto',
-      Titulo: 'Titulo Variable',
-      Mensaje: 'Pendiente definir mensaje '
+        Titulo: '',
+        Mensaje: "Estas Seguro que deseas salir?",
+        tipoModal: 'ConirmacionSalir',
       },
-      height: '400px',
-      width: '600px',
+      disableClose : true,
+      height: '100px',
+      width: '2000px'
     });
-  }
-
-  procesarModal() {
-    const dialogRef = this.dialog.open(ModalpreAprobadoComponent, {
-      data: this.consultaCentrales.contactoCentrales
-    });
-    dialogRef.afterClosed().subscribe(result => {
-     // console.log('Dialog result: ${result}');
+    dialogRef.afterClosed().subscribe(result  =>{
+      console.log(result);
     })
   }
-
-  procesarRespuesta(){
-    const dialogRef = this.dialog.open(ModalRespuestaComponent, {
-      data:  {
-        sentEmail: this.sendMail,
-        sendWhatsapp: this.sendWhatsapp
-      },
-    //  disableClose: true
-    });
-    dialogRef.afterClosed().subscribe(result => {
-     // console.log('Dialog result: ${result}');
-    })
-  }
-
-  // cerrarModal(){
-  //   this.dialogRef.close();
-  // }
-
-
 }
 
 

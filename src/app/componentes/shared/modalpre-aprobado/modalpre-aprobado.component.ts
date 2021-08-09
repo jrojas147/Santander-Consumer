@@ -30,21 +30,21 @@ import * as moment from 'moment';
 })
 export class ModalpreAprobadoComponent implements OnInit {
   formulario_Empleado: FormGroup;
-  stepFinish: boolean;
+  stepFinish: boolean;//
   const = Constantes;
   Actividad = 'Empleado';
   Empleado = false;
-  Independiente = false;
+  Independiente = false;//
   resultado: number;
-  messageBody: string = '';
+  messageBody: string = '';//
   maxDate = new Date();
   MinDate = moment().subtract(80, 'year');
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public DataFormualrioPreaprobado: FormularioPreAprobadoServiceService,
-    private fb: FormBuilder,
-    private http: HttpClient
+    private fb: FormBuilder,//
+    private http: HttpClient//
   ) {
   }
 
@@ -53,7 +53,7 @@ export class ModalpreAprobadoComponent implements OnInit {
     this.initFormulario_Empleados();
 
   }
-  initFormulario_Empleados() {
+  initFormulario_Empleados() {//
     this.formulario_Empleado = this.fb.group({
       Fecha_Nacimiento: new FormControl("", Validators.required),
       Lugar_Nacimiento: new FormControl("", Validators.required),

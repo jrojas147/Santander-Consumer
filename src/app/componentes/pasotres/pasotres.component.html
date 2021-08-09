@@ -61,15 +61,10 @@
       </div>
     </div>
     <hr>
-    <div *ngIf="resultado" [@animationFadeOut]="resultado" class="piepaso">
-      <button color="primary" id="finalizar" (click)="gotoReferrer()" mat-button matStepperNext>FINALIZAR<mat-icon>
-          arrow_right_icon</mat-icon></button>
-          <!-- <button (click)="procesarModalPreaprobado()">pre-aprobado</button>
-          <button (click)="procesarModalRespuesta()">respuesta</button> -->
-    </div>
-     <!-- <div class="contBotonPaso">
+
+     <div class="contBotonPaso">
       <div *ngIf="resultado && sendMail" [@animationFadeOut]="resultado" class="piepaso" id="mail">
-        <button color="primary" mat-button matStepperNext (click)="procesarModal()">Diligenciar Datos</button>
+        <button color="primary" mat-button matStepperNext (click)="procesarModalPreaprobado()">Diligenciar Datos</button>
       </div>
       <div *ngIf="resultado && sendWhatsapp" [@animationFadeOut]="resultado" class="piepaso" id="wsp">
         <a href="https://cariai.com/santanderdigitalchannel/santanderdigitalchannel">
@@ -80,6 +75,6 @@
         <button color="primary" id="finalizar" (click)="gotoReferrer()" mat-button matStepperNext>FINALIZAR<mat-icon>
             arrow_right_icon</mat-icon></button>
       </div>
-    </div> -->
+    </div>
   </div>
 </div>

@@ -9,7 +9,7 @@ export const Constantes = {
             ],
     minimo: 10000000,
     precioMinimo: 13000000,
-    valorMinIngreso: 10000,
+    valorMinIngreso: 1200000,
     tasa: 0.0115,
     constanteSeguro: 1220 / 1000000,
      /* Regex */
@@ -41,11 +41,11 @@ export const Constantes = {
     ],
 
     EstadoCivil: [
-      {value: 'Soltero', name: 'Solter@'},
-      {value: 'Casado', name: 'Casad@'},
-      {value: 'Union Libre', name: 'Union Libre'},
-      {value: 'Divorciado', name: 'Divorciado'},
-      {value: 'Viudo', name: 'Viudo'}
+      {value: 'Soltero', name: 'Soltero(a)'},
+      {value: 'Casado', name: 'Casado(a)'},
+      {value: 'Divorciado', name: 'Divorciado(a)'},
+      {value: 'Viudo', name: 'Viudo(a)'},
+      {value: 'Union Libre', name: 'Union Libre'}
     ],
 
     TipoContrato: [
