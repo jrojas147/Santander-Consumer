@@ -58,6 +58,14 @@
             <p class="textoRespuesta">Tuvimos un problema, por favor intenta más tarde.</p>
           </div>
         </div>
+          <!--Respuesta Null-->
+            <div *ngIf="letraMensaje === null && scanParams.enriquecido">
+               <div class="contRespuesta">
+                  <img [src]="const.negado" alt="">
+                  <p class="tituloNegado">¡Ups ocurrió un error!</p>
+                  <p class="textoRespuesta">Tuvimos un problema, por favor intenta más tarde.</p>
+            </div>
+          </div>
       </div>
     </div>
     <hr>

@@ -7,8 +7,6 @@ import { Constantes } from 'src/constantes/constantes';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ScanparamsService } from 'src/app/servicios/scanparams.service';
 import { MatDialog } from '@angular/material';//Nvo
-import { ModalpreAprobadoComponent } from '../shared/modalpre-aprobado/modalpre-aprobado.component';
-import { ModalRespuestaComponent } from '../shared/modal-respuesta/modal-respuesta.component';
 import { ModalComponent } from '../shared/modal/modal.component';
 
 
@@ -79,9 +77,9 @@ export class PasotresComponent implements OnInit{
           this.AccionMensaje(letraMensaje);
 
             //test
-              this.letraMensaje = 'C';
-               this.scanParams.enriquecido = true;
-               this.AccionMensaje(this.letraMensaje);
+              this.letraMensaje = 'A';
+              this.scanParams.enriquecido = true;
+              this.AccionMensaje(this.letraMensaje);
         });
       }
     });
@@ -121,12 +119,12 @@ export class PasotresComponent implements OnInit{
 
   validarTituloModalRespuesta():void{
     if ( this.VarianteAprobado =='sendMail' ){
-      this.TituloModRespuesta = 'Credito Prea-probado, estas a punto de cumplir tus sueños';
-      this.MensajeModRespuesta = 'Para finalizar solo tienes que diligenciar el siguiente formato. Te estaremos contactando pronto';
+      this.TituloModRespuesta = 'Credito Pre-Aprobado';
+      this.MensajeModRespuesta = 'Estas a punto de cumplir tus sueños, Para finalizar solo tienes que diligenciar el siguiente formato. Te estaremos contactando pronto';
     }
     if ( this.VarianteAprobado =='sendWhatsapp' ){
-      this.TituloModRespuesta = 'Credito Prea-probado, estas a punto de cumplir tus sueños';
-      this.MensajeModRespuesta = 'Te estamos contactando con nuestro asesor mediante whatsapp';
+      this.TituloModRespuesta = 'Credito Pre-Aprobado';
+      this.MensajeModRespuesta = 'Estas a punto de cumplir tus sueños, Te estamos contactando con nuestro asesor mediante whatsapp';
     }
   }
 
@@ -142,8 +140,8 @@ export class PasotresComponent implements OnInit{
       ejecutarFormularioPreaprobado: this.ejecutarFormularioPreaprobado
       },
       disableClose : true,
-      height: '300px',
-      width: '490px',
+      height: '270px',
+      width: '450px',
     });
     debugger;
     dialogRef.afterClosed().subscribe(result  =>{
