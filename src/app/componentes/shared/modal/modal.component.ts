@@ -1,11 +1,12 @@
 import { Constantes } from './../../../../constantes/constantes';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { FormularioPreAprobadoServiceService } from 'src/app/servicios/FormularioPreAprobado/formulario-pre-aprobado.service.service';
 import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms'
 import * as moment from 'moment';
+import { ModalinfoComponent } from '../modal-Info/modalinfo.component';
 
 @Component({
   selector: 'app-modal',
@@ -40,12 +41,21 @@ export class ModalComponent implements OnInit {
   stepFinish: boolean;//
   maxDate = new Date();
   MinDate = moment().subtract(80, 'year');
-  dialog: any;
+  //dialog: any;
   ejecutarFormularioPreaprobado: boolean;
   confirmSalir: boolean = false;
+  ModalInfoConfirSalir: boolean = false;
+  ModalInfooAvisoDocumentos: boolean = false;
+  tituloModalInfo: string;
+  mensajeModalInfo: string;
+  mensajeModalInfo2: string;
+  tipoModalInfo: string;
+  ModalConfirmSalir: boolean = false;
+  ModalAvisoDocumentos: boolean = false;
 
 
   constructor(
+    private dialog: MatDialog,
     private dialogRef: MatDialogRef<ModalComponent>,
     @Inject(MAT_DIALOG_DATA) public dataModRespuesta: {
       Titulo: string,
@@ -96,7 +106,6 @@ export class ModalComponent implements OnInit {
     });
   }
 
-
   onsubmit() {
     const datosFormulario = this.formulario_Empleado.value;
     this.messageBody = '¡Estoy a punto de cumplir mi sueño!' + '\n' + '\n';
@@ -136,7 +145,7 @@ export class ModalComponent implements OnInit {
     }
     return nameIdetificacion;
   }
-  patternCoincide(event, value) {
+  patternCoincide(event, value) {//Validacion caracteres form
     const pattern =  new RegExp(value);
     const inputChar = String.fromCharCode(event.charCode);
     if (event.keyCode !== 8 && !pattern.test(inputChar)) {
@@ -165,12 +174,57 @@ export class ModalComponent implements OnInit {
     this.confirmSalir = true;
     this.dataModRespuesta.tipoModal = ''
   }
-
-
-
-
    cerrar(): void {
      this.dialogRef.close();
    }
+
+   ProcesarSalir(){
+     this.ModalAvisoDocumentos = false;
+    this.ModalConfirmSalir = true;
+    this.mensajeModalInformativo();
+    this.ejecutarModalInfo();
+  }
+
+  ProcesarAvisoDocumentos(){
+    this.ModalConfirmSalir = false,
+    this.ModalAvisoDocumentos = true
+    this.mensajeModalInformativo();
+    this.ejecutarModalInfo();
+
+  }
+   mensajeModalInformativo(){
+     if(this.ModalConfirmSalir){
+       this.tituloModalInfo = 'Deseas salir sin finalizar'
+       this.mensajeModalInfo = 'Estas Seguro que deseas salir sin finalizar tu solicitud'
+     }
+     if(this.ModalAvisoDocumentos){
+      this.tituloModalInfo = 'Recuerda adjuntar los siguientes documentos:'
+      this.mensajeModalInfo = 'Si eres empleado a término indefinido, fijo o por obra/labor antiguedad mayor a 12 meses, debes enviar el/los certificado(s) que lo demuestren.'
+      this.mensajeModalInfo2 = 'Si eres empleado por prestación de servicios debes haber trabajado los últimos 24 meses y debes enviar el/los contrato(s) o carta laboral y enviar los últimos 3 extractos bancarios.'
+     }
+   }
+
+   ejecutarModalInfo(){
+    const dialogRef =this.dialog.open(ModalinfoComponent, {
+      data: {
+        titulo : this.tituloModalInfo,
+        mensaje : this.mensajeModalInfo,
+        mensaje2: this.mensajeModalInfo2,
+        tipoModalSalir : this.ModalConfirmSalir,
+        tipoModalDocumentos : this.ModalAvisoDocumentos
+      },
+      disableClose : true,
+       height: '270px',
+       width: '560px',
+    });
+    dialogRef.afterClosed().subscribe(result  =>{
+      if (result && this.ModalConfirmSalir){
+        this.cerrar();
+      }
+      if (result && this.ModalAvisoDocumentos ){
+        this.onsubmit();//Validar
+      }
+    })
+  }
 
 }

@@ -1,4 +1,3 @@
-import { ModalpreaprobadoModule } from './componentes/shared/modalpre-aprobado/modalpre-aprobado.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,10 +20,9 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { ModalTycComponent } from './componentes/modal-tyc/modal-tyc.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
-import { ModalRespuestaComponent } from './componentes/shared/modal-respuesta/modal-respuesta.component';
-import { ModalRespuestaModule } from './componentes/shared/modal-respuesta/modal-respuesta.module';
-import { ModalComponent } from './componentes/shared/modal/modal.component';
+
 import { ModalModule } from './componentes/shared/modal/modal.module';
+import { ModalModuleInfo } from './componentes/shared/modal-Info/modalinfo.module';
 
 
 registerLocaleData(localeEs, 'es');
@@ -40,6 +38,7 @@ registerLocaleData(localeEs, 'es');
     PieComponent,
     ModalTycComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -49,12 +48,11 @@ registerLocaleData(localeEs, 'es');
     CurrencyMaskModule,
     FormsModule,
     ReactiveFormsModule,
-    ModalpreaprobadoModule,
-    ModalRespuestaModule,
     ModalModule,
     HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    ModalModuleInfo
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es'}],
   bootstrap: [AppComponent]

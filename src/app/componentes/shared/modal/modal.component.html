@@ -1,20 +1,4 @@
 <section class="section-modal">
-
-  <!-- <div *ngIf="confirmSalir" class="modal-Generico">
-    <div class="encabezado">
-      <img [src]="const.cliente" alt="">
-    </div>
-    <div class="body"><h2>Realmente Deseas Salir?</h2>  </div><br>
-    <div class="contBotonPaso">
-      <div class="BtonMantener">
-        <button mat-button color="primary" >Mantener</button>
-      </div>
-      <div class="BtonSalir">
-        <button mat-button color="primary" (click)=" cerrar()" class="piepaso">Salir</button>
-      </div>
-    </div>
-  </div> -->
-
   <div *ngIf="dataModRespuesta.tipoModal === 'Generico'" class="modal-Generico">
     <div class="encabezado">
       <img [src]="const.cliente" alt="">
@@ -29,7 +13,8 @@
         <button mat-button color="primary" (click)="procesarFormulario()">Diligenciar Formulario</button>
       </div>
       <div class="BtnSalir">
-        <button mat-button color="primary" id="finalizar" (click)="cerrar()" class="piepaso">Salir</button>
+        <!-- <button mat-button color="primary" id="finalizar" (click)="cerrar()" class="piepaso">Salir</button> -->
+        <button mat-button color="primary" id="finalizar" (click)="ProcesarSalir()" class="piepaso">Salir</button>
       </div>
     </div>
   </div>
@@ -295,13 +280,13 @@
       <hr>
         <div class="contBotonPaso">
           <div class="BtonAccion">
-            <button mat-button (click)="onsubmit()"
+            <button mat-button (click)="ProcesarAvisoDocumentos()"
               color="primary" type="button" [disabled]="formulario_Empleado.status === 'INVALID'" class="btnPrimario">
               Enviar
             </button>
           </div>
           <div class="BtnSalir">
-            <button mat-button color="primary" id="finalizar" (click)="cerrar()" class="piepaso">Salir</button>
+            <button mat-button color="primary" id="finalizar" (click)="ProcesarSalir()" class="piepaso">Salir</button>
           </div>
         </div>
 

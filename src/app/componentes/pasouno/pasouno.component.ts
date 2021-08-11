@@ -5,7 +5,8 @@ import { ConsultaCentralesService } from 'src/app/servicios/consultaCentrales.se
 import { RespuestaCalculadoraService } from 'src/app/servicios/respuestaCalculadora.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { TouchedErrorStateMatcher } from '../shared/touchedErrorStateMatcher';
-import { MatDialog } from '@angular/material';//Nvo
+import { MatDialog, throwMatDialogContentAlreadyAttachedError } from '@angular/material';//Nvo
+import { ModalinfoComponent } from '../shared/modal-Info/modalinfo.component';
 
 
 @Component({
@@ -32,6 +33,12 @@ export class PasounoComponent {
   porcentaje: number = 0;
   matcher = new TouchedErrorStateMatcher;
   ////Temporañ
+  tituloModalInfo: String
+  mensajeModalInfo: String
+  mensajeModalInfo2: string
+  ModalConfirmSalir:  boolean = false
+  ModalAvisoDocumentos: boolean = false
+
 
   constructor( private dialog: MatDialog,
                public formBuilder: FormBuilder,
@@ -39,6 +46,13 @@ export class PasounoComponent {
                public respuestaCalculadora: RespuestaCalculadoraService) {
     this.crearFormulario();
     this.statusCambia();
+    ////Joan
+    this.tituloModalInfo = 'Recuerda adjuntar documentos:'
+    this.mensajeModalInfo = 'Si eres empleado a término indefinido, fijo o por obra/labor antiguedad mayor a 12 meses, debes enviar el/los certificado(s) que lo demuestren.'
+    this.mensajeModalInfo2 = 'Si eres empleado por prestación de servicios debes haber trabajado los últimos 24 meses y debes enviar el/los contrato(s) o carta laboral y enviar los últimos 3 extractos bancarios.'
+    this.ModalAvisoDocumentos = true
+
+
    }
 
   crearFormulario() {
@@ -149,4 +163,28 @@ export class PasounoComponent {
   get tipoIdNoValido() {
     return this.primero.controls['modelo'].value == 0 || this.primero.controls['modelo'].value == "";
   }
+
+  ejecutarModalInfo(){
+    const dialogRef =this.dialog.open(ModalinfoComponent, {
+      data: {
+        titulo : this.tituloModalInfo,
+        mensaje : this.mensajeModalInfo,
+        mensaje2: this.mensajeModalInfo2,
+        tipoModalSalir : this.ModalConfirmSalir,
+        tipoModalDocumentos : this.ModalAvisoDocumentos
+      },
+      disableClose : true,
+       height: '270px',//
+       width: '560px',//
+    });
+    dialogRef.afterClosed().subscribe(result  =>{
+      if (result && this.ModalConfirmSalir){
+       // this.cerrar();
+      }
+      if (result && this.ModalAvisoDocumentos ){
+      //  this.onsubmit();//Validar
+      }
+    })
+  }
+
 }
