@@ -98,7 +98,6 @@ export class ModalComponent implements OnInit {
 
 
   onsubmit() {
-    //debugger;
     const datosFormulario = this.formulario_Empleado.value;
     this.messageBody = '¡Estoy a punto de cumplir mi sueño!' + '\n' + '\n';
     this.messageBody = this.messageBody + 	'Para eso les envío los datos solicitados y la documentación requerida para obtener mi crédito vehicular:' + '\n' + '\n';
@@ -163,7 +162,6 @@ export class ModalComponent implements OnInit {
   }
 
   ConfirmacionSalir(){
-    //debugger;
     this.confirmSalir = true;
     this.dataModRespuesta.tipoModal = ''
   }

@@ -73,13 +73,13 @@ export class PasotresComponent implements OnInit{
         this.consultaCentrales.respuesta(this.consultaCentrales.contactoCentrales).subscribe((res: any) => {
           this.resultado = res.IdResultado;
           let respuesta = res.Resultado;
-          let letraMensaje = res.ResultadoLetra;
-          this.AccionMensaje(letraMensaje);
-
+          this.letraMensaje = res.ResultadoLetra;
+          this.scanParams.enriquecido;
+          this.AccionMensaje(this.letraMensaje);
             //test
-              this.letraMensaje = 'A';
-              this.scanParams.enriquecido = true;
-              this.AccionMensaje(this.letraMensaje);
+            //  this.letraMensaje = 'A';
+            // this.scanParams.enriquecido = true;
+            //  this.AccionMensaje(this.letraMensaje);
         });
       }
     });
@@ -143,7 +143,6 @@ export class PasotresComponent implements OnInit{
       height: '270px',
       width: '450px',
     });
-    debugger;
     dialogRef.afterClosed().subscribe(result  =>{
       console.log(`Ejecutar formulario preaprobado ${result}`)
       if(result === true){
