@@ -4,8 +4,10 @@
       <div class="titulo"> <h1> {{dataInfo.titulo}}  </h1>
         </div>
     </div>
-    <div class="body">{{dataInfo.mensaje}}</div><br>
-    <div class="body">{{dataInfo.mensaje2}}</div><br>
+    <div class="body">
+    <div class="body1">{{dataInfo.mensaje}}</div><br>
+    <div class="body2" *ngIf="dataInfo.tipoModalDocumentos">{{dataInfo.mensaje2}}</div>
+  </div>
     <div class="contBotonPaso">
       <div class="BtonAccion" *ngIf="dataInfo.tipoModalSalir" >
         <button mat-button color="primary" [mat-dialog-close]="true">Salir</button>

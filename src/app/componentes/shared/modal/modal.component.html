@@ -7,20 +7,21 @@
     <div class="body">{{dataModRespuesta.Mensaje}}</div><br>
     <div class="contBotonPaso">
       <div class="BtonAccion" *ngIf="dataModRespuesta.sendWhatsapp" >
-        <button mat-button color="primary" (click)="ConectarWhatsapp()">Chatear Asesor</button>
+        <button mat-button color="primary" (click)="ConectarWhatsapp()">Chatea con tu asesor</button>
       </div>
       <div class="BtonAccion" *ngIf="dataModRespuesta.sentEmail" >
         <button mat-button color="primary" (click)="procesarFormulario()">Diligenciar Formulario</button>
       </div>
       <div class="BtnSalir">
-        <!-- <button mat-button color="primary" id="finalizar" (click)="cerrar()" class="piepaso">Salir</button> -->
         <button mat-button color="primary" id="finalizar" (click)="ProcesarSalir()" class="piepaso">Salir</button>
       </div>
     </div>
   </div>
   <div *ngIf="dataModRespuesta.tipoModal === 'FormularioPreAprobado'" class="modal-preaprobado">
     <div class="contLogo">
-      <img [src]="const.cliente" alt="">
+      <div class="img">
+        <img [src]="const.cliente" alt="">
+      </div>
       <div class="Titulo">"Falta poco" Ingresa tus datos para finalizar</div>
     </div>
     <form [formGroup]="formulario_Empleado">
@@ -31,7 +32,7 @@
             <input matInput
             [matDatepicker]="FechaNacimento"
             [max]="maxDate"  [min]="MinDate"
-            placeholder="Fecha Nacimiento:"
+            placeholder="Fecha nacimiento"
             formControlName="Fecha_Nacimiento">
             <mat-datepicker-toggle matSuffix [for]="FechaNacimento"></mat-datepicker-toggle>
             <mat-datepicker #FechaNacimento></mat-datepicker>
@@ -43,7 +44,7 @@
             matInput
             (keypress)="patternCoincide($event, const.patternLetter)"
             type = "text"
-            placeholder="Lugar Nacimiento"
+            placeholder="Lugar nacimiento"
             formControlName="Lugar_Nacimiento">
           </mat-form-field>
         </div>
@@ -55,7 +56,7 @@
             [matDatepicker]="FechaExpedicionDocumento"
             [max]="maxDate"
             [min]="MinDate"
-            placeholder="Fecha Expedición Documento:"
+            placeholder="Fecha expedición documento"
             formControlName="Fecha_Expedicion_Documento">
             <mat-datepicker-toggle matSuffix [for]="FechaExpedicionDocumento"></mat-datepicker-toggle>
             <mat-datepicker #FechaExpedicionDocumento></mat-datepicker>
@@ -67,7 +68,7 @@
             matInput
             (keypress)="patternCoincide($event, const.patternLetter)"
             type = "text"
-            placeholder="Lugar Expedicion Documento"
+            placeholder="Lugar expedición documento"
             formControlName="Lugar_Expedicion_Documento">
           </mat-form-field>
         </div>
@@ -77,7 +78,7 @@
           <mat-form-field>
             <mat-select
             class="Sel-Estado-Civil"
-            placeholder="Estado Civil"
+            placeholder="Estado civil"
             formControlName="Estado_Civil">
               <mat-option *ngFor="let DataEstrato of const.EstadoCivil" [value]="DataEstrato.value">
                 {{DataEstrato.name}}
@@ -91,14 +92,14 @@
             class="Sel-Personas-Cargo"
             type="number"
             min="0"
-            matInput placeholder="N° Personas a cargo"
+            matInput placeholder="N° personas a cargo"
             formControlName="Numero_Personas_Cargo">
         </mat-form-field>
         </div>
         <div class="form-group"><!--Estrato-->
           <mat-form-field>
             <mat-select
-            placeholder="Ingresa tu estrato"
+            placeholder="Estrato"
             formControlName="Estrato">
               <mat-option *ngFor="let DataEstrato of const.Estratos" [value]="DataEstrato.value">
                 {{DataEstrato.name}}
@@ -109,7 +110,7 @@
       </div>
       <div id ="contenedorDividido" class="DatosDomicilio">
      <div class="form-group"><!--Direccion-->
-        <mat-form-field class="Direccion">
+        <mat-form-field class="Dirección">
           <input matInput placeholder="Dirección" formControlName="Direccion">
         </mat-form-field>
       </div>
@@ -132,7 +133,9 @@
         </div>
         <div class="form-group"><!--Tipo Vivienda-->
           <mat-form-field>
-            <mat-select placeholder="Tipo Vivienda" formControlName="Tipo_Vivienda">
+            <mat-select
+            placeholder="Tipo de vivienda"
+            formControlName="Tipo_Vivienda">
               <mat-option *ngFor="let DataEstrato of const.TipoVivienda" [value]="DataEstrato.value">
                 {{DataEstrato.name}}
               </mat-option>
@@ -146,7 +149,7 @@
             <mat-form-field>
               <input
               matInput
-              placeholder="Tiempo Laborado:"
+              placeholder="Tiempo laborado:"
               formControlName="Tiempo_Laborado_Empresa">
             </mat-form-field>
           </div>
@@ -177,7 +180,7 @@
             <mat-form-field>
                 <input
                 matInput
-                placeholder="Tiempo Laborado:"
+                placeholder="Tiempo laborado"
                 formControlName="Tiempo_Actividad_Independinente">
             </mat-form-field>
           </div>
@@ -225,7 +228,7 @@
             currencyMask
             [options]="{ align: 'left', prefix: '$ ', suffix: '', thousands: '.', decimal: ',', precision: 0 }"
             (keypress)="patternCoincide($event, const.patternNumber)"
-            placeholder="Ingresa tus Egresos"
+            placeholder="Ingresa tus egresos"
             formControlName="Egresos">
           </mat-form-field>
         </div>
@@ -237,7 +240,7 @@
             matInput
             (keypress)="patternCoincide($event, const.patternLetter)"
             type = "text"
-            placeholder="Nombre referencia Personal"
+            placeholder="Nombre referencia personal"
             formControlName="Nombre_Referencia_1_P">
           </mat-form-field>
         </div>
@@ -248,7 +251,7 @@
             type="tel"
             maxlength="10"
             (keypress)="patternCoincide($event, const.patternNumber)"
-            placeholder="Telefono Referecnia Personal"
+            placeholder="Telefono referencia personal"
             formControlName="Contacto_Referencia_1_P">
           </mat-form-field>
         </div>
@@ -260,7 +263,7 @@
             matInput
             (keypress)="patternCoincide($event, const.patternLetter)"
             type = "text"
-            placeholder="Nombre Referencia Familiar"
+            placeholder="Nombre referencia familiar"
             formControlName="Nombre_Referencia_1_F">
           </mat-form-field>
         </div>
@@ -271,7 +274,7 @@
             type="tel"
             maxlength="10"
             (keypress)="patternCoincide($event, const.patternNumber)"
-            placeholder="Telefono Referencia Familiar"
+            placeholder="Telefono referencia familiar"
             formControlName="Contacto_Referencia_1_F">
           </mat-form-field>
         </div>

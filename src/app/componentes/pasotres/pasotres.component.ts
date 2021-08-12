@@ -42,6 +42,7 @@ export class PasotresComponent implements OnInit{
   RespuestaModalRespuesta: any;
   dialogRef: any;
   ejecutarFormularioPreaprobado: boolean = false;
+  actividadEconomicaValue: number;
 
   constructor(private dialog: MatDialog,
     public consultaCentrales: ConsultaCentralesService,
@@ -62,6 +63,7 @@ export class PasotresComponent implements OnInit{
             this.consultaCentrales.contactoCentrales.DatosFinancieros.ActividadIndependiente = 15;
           }
           if (this.consultaCentrales.contactoCentrales.DatosFinancieros.ActividadEconomica === 11) {
+            this.actividadEconomicaValue = 11;
             this.consultaCentrales.contactoCentrales.DatosFinancieros.ActividadEconomica = 1;
             this.consultaCentrales.contactoCentrales.DatosFinancieros.ActividadIndependiente = 16;
           }
@@ -77,7 +79,7 @@ export class PasotresComponent implements OnInit{
           this.scanParams.enriquecido;
           this.AccionMensaje(this.letraMensaje);
             //test
-               this.letraMensaje = 'A';
+               this.letraMensaje = 'C';
                this.scanParams.enriquecido = true;
                this.AccionMensaje(this.letraMensaje);
         });
@@ -115,6 +117,10 @@ export class PasotresComponent implements OnInit{
 
   gotoReferrer() {
     window.location.href = this.consultaCentrales.linkOrigen;
+  }
+
+  ConectarWhatsapp() {
+    window.open("https://cariai.com/santanderdigitalchannel/santanderdigitalchannel");
   }
 
   validarTituloModalRespuesta():void{
@@ -158,6 +164,7 @@ export class PasotresComponent implements OnInit{
         Titulo: 'Formulario Pre-Aprobado',
         Mensaje: "Falta poco, Ingresa tus datos para finalizar",
         tipoModal: 'FormularioPreAprobado',
+        tipoActividadEconomica : this.actividadEconomicaValue
       },
       disableClose : true,
       height: '700px',

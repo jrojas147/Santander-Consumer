@@ -75,9 +75,8 @@
         <button color="primary" mat-button matStepperNext (click)="procesarModalPreaprobado()">Diligenciar Datos</button>
       </div>
       <div *ngIf="resultado && sendWhatsapp" [@animationFadeOut]="resultado" class="piepaso" id="wsp">
-        <a href="https://cariai.com/santanderdigitalchannel/santanderdigitalchannel">
-          <button color="primary" mat-button matStepperNext>Chatea con <br class="noBig"> tu asesor</button>
-        </a>
+        <!-- <button color="primary" mat-button matStepperNext (click)="ConectarWhatsapp()"> Chatea con <br class="noBig"> tu asesor</button> -->
+        <button mat-button color="primary" (click)="ConectarWhatsapp()">Chatea con tu asesor</button>
       </div>
       <div *ngIf="resultado" [@animationFadeOut]="resultado" class="piepaso">
         <button color="primary" id="finalizar" (click)="gotoReferrer()" mat-button matStepperNext>FINALIZAR<mat-icon>

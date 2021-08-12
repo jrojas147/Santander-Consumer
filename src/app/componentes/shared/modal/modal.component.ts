@@ -1,3 +1,4 @@
+import { DatosFinancieros } from './../../../interfaces/datosFinancieros';
 import { Constantes } from './../../../../constantes/constantes';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
@@ -7,6 +8,7 @@ import { FormularioPreAprobadoServiceService } from 'src/app/servicios/Formulari
 import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms'
 import * as moment from 'moment';
 import { ModalinfoComponent } from '../modal-Info/modalinfo.component';
+
 
 @Component({
   selector: 'app-modal',
@@ -65,10 +67,12 @@ export class ModalComponent implements OnInit {
       tipoModal: string,
       datacentrales : any,
       ejecutarFormularioPreaprobado: boolean
+      tipoActividadEconomica: number
      },
      private fb: FormBuilder,//
      private http: HttpClient,//
-     public DataFormualrioPreaprobado: FormularioPreAprobadoServiceService) {//
+     public DataFormualrioPreaprobado: FormularioPreAprobadoServiceService)////
+     {//
   }
 
   ngOnInit() {
@@ -111,8 +115,23 @@ export class ModalComponent implements OnInit {
     this.messageBody = '¡Estoy a punto de cumplir mi sueño!' + '\n' + '\n';
     this.messageBody = this.messageBody + 	'Para eso les envío los datos solicitados y la documentación requerida para obtener mi crédito vehicular:' + '\n' + '\n';
     this.messageBody = this.messageBody + 'Nombre:  ' + this.dataModRespuesta.datacentrales.DatosBasicos.Nombre + '\n';
-    this.messageBody = this.messageBody + 'Tipo Documento:  ' + this.dataModRespuesta.datacentrales.DatosBasicos.TipoDocumento + '\n';
+    if(this.dataModRespuesta.datacentrales.DatosBasicos.TipoDocumento === 1){
+      this.messageBody = this.messageBody + 'Tipo Documento:  ' + 'Cédula de Ciudadanía'+ '\n';
+    }
+    if(this.dataModRespuesta.datacentrales.DatosBasicos.TipoDocumento === 2){
+      this.messageBody = this.messageBody + 'Tipo Documento:  ' + 'Cédula de Extranjería'+ '\n';
+    }
     this.messageBody = this.messageBody + 'Número Documento:  ' + this.dataModRespuesta.datacentrales.DatosBasicos.NumeroDocumento + '\n';
+    if (this.dataModRespuesta.tipoActividadEconomica === 11  )
+    if (this.dataModRespuesta.datacentrales.DatosFinancieros.ActividadEconomica === 1){
+      this.messageBody = this.messageBody + 'Tipo Actividad Economica: ' + 'Pesionado' + '\n';
+    }
+    if (this.dataModRespuesta.tipoActividadEconomica === 2){
+      this.messageBody = this.messageBody + 'Tipo Actividad Economica: ' + 'Independiente' + '\n';
+    }
+    if (this.dataModRespuesta.tipoActividadEconomica === 11){
+      this.messageBody = this.messageBody + 'Tipo Actividad Economica: ' + 'Empleado' + '\n';
+    }
     this.messageBody = this.messageBody + 'Celular:  ' + this.dataModRespuesta.datacentrales.DatosBasicos.Celular + '\n';
     this.messageBody = this.messageBody + 'Email:  ' + this.dataModRespuesta.datacentrales.DatosBasicos.CorreoPersonal + '\n';
     this.messageBody = this.messageBody + 'Ingresos:  ' + this.dataModRespuesta.datacentrales.DatosFinancieros.IngresoMensual + '\n';
@@ -152,7 +171,7 @@ export class ModalComponent implements OnInit {
       event.preventDefault();
     }
   }
-  //Chat Whatsapp
+
   ConectarWhatsapp() {
     window.open("https://cariai.com/santanderdigitalchannel/santanderdigitalchannel");
   }
@@ -182,20 +201,21 @@ export class ModalComponent implements OnInit {
      this.ModalAvisoDocumentos = false;
     this.ModalConfirmSalir = true;
     this.mensajeModalInformativo();
-    this.ejecutarModalInfo();
+    this.ejecutarModalAvisoSalir();
   }
 
   ProcesarAvisoDocumentos(){
     this.ModalConfirmSalir = false,
     this.ModalAvisoDocumentos = true
     this.mensajeModalInformativo();
-    this.ejecutarModalInfo();
+    this.ejecutarModalAvisoDocumentos();
 
   }
+
    mensajeModalInformativo(){
      if(this.ModalConfirmSalir){
        this.tituloModalInfo = 'Deseas salir sin finalizar'
-       this.mensajeModalInfo = 'Estas Seguro que deseas salir sin finalizar tu solicitud'
+       this.mensajeModalInfo = 'Estas seguro que deseas salir sin finalizar tu solicitud'
      }
      if(this.ModalAvisoDocumentos){
       this.tituloModalInfo = 'Recuerda adjuntar los siguientes documentos:'
@@ -204,7 +224,7 @@ export class ModalComponent implements OnInit {
      }
    }
 
-   ejecutarModalInfo(){
+   ejecutarModalAvisoSalir(){
     const dialogRef =this.dialog.open(ModalinfoComponent, {
       data: {
         titulo : this.tituloModalInfo,
@@ -214,17 +234,37 @@ export class ModalComponent implements OnInit {
         tipoModalDocumentos : this.ModalAvisoDocumentos
       },
       disableClose : true,
-       height: '270px',
-       width: '560px',
+       height: '190px',
+       width: '380px',
+    });
+    dialogRef.afterClosed().subscribe(result  =>{
+      if (result && this.ModalConfirmSalir){
+        this.cerrar();
+      }
+    })
+  }
+
+  ejecutarModalAvisoDocumentos(){
+    const dialogRef =this.dialog.open(ModalinfoComponent, {
+      data: {
+        titulo : this.tituloModalInfo,
+        mensaje : this.mensajeModalInfo,
+        mensaje2: this.mensajeModalInfo2,
+        tipoModalDocumentos : this.ModalAvisoDocumentos
+      },
+      disableClose : true,
+       height: '260px',
+       width: '570px',
     });
     dialogRef.afterClosed().subscribe(result  =>{
       if (result && this.ModalConfirmSalir){
         this.cerrar();
       }
       if (result && this.ModalAvisoDocumentos ){
-        this.onsubmit();//Validar
+        this.onsubmit();
       }
     })
   }
+
 
 }
