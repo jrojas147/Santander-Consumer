@@ -149,7 +149,7 @@
             <mat-form-field>
               <input
               matInput
-              placeholder="Tiempo laborado:"
+              placeholder="Tiempo laborado"
               formControlName="Tiempo_Laborado_Empresa">
             </mat-form-field>
           </div>
@@ -164,7 +164,7 @@
           <div class="form-group"><!--Tipo De Contrato-->
             <mat-form-field>
               <mat-select
-              placeholder="Tipo contrato"
+              placeholder="Tipo de contrato"
               formControlName="Tipo_Contrato">
                 <mat-option *ngFor="let DataEstrato of const.TipoContrato" [value]="DataEstrato.value">
                   {{DataEstrato.name}}

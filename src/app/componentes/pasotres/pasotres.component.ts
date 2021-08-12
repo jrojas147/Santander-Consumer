@@ -126,11 +126,11 @@ export class PasotresComponent implements OnInit{
   validarTituloModalRespuesta():void{
     if ( this.VarianteAprobado =='sendMail' ){
       this.TituloModRespuesta = 'Credito Pre-Aprobado';
-      this.MensajeModRespuesta = 'Estas a punto de cumplir tus sueños, Para finalizar solo tienes que diligenciar el siguiente formato. Te estaremos contactando pronto';
+      this.MensajeModRespuesta = 'Estas a punto de cumplir tus sueños, para finalizar solo tienes que diligenciar el siguiente formato. Te estaremos contactando pronto';
     }
     if ( this.VarianteAprobado =='sendWhatsapp' ){
       this.TituloModRespuesta = 'Credito Pre-Aprobado';
-      this.MensajeModRespuesta = 'Estas a punto de cumplir tus sueños, Te estamos contactando con nuestro asesor mediante whatsapp';
+      this.MensajeModRespuesta = 'Estas a punto de cumplir tus sueños, te estamos contactando con nuestro asesor mediante WhatsApp';
     }
   }
 
