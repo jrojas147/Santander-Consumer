@@ -1,43 +1,39 @@
 @mixin Asmall(){
-    @media only screen and (max-width: #{$Asmall}){
+    @media only screen and (max-width: #{$Asmall}){// 0 - 575.98px
         @content;
     }
 }
 
 // Small devices (landscape phones, 576px and   up)
-
 @mixin smallTablet(){
-    @media (min-width: #{$small}) and (max-width: #{$Atablet}){//$Atablet: 767.98px;
+    @media (min-width: #{$small}) and (max-width: #{$Atablet}){//576px - 767.98px
         @content;
     }
 }
 
 // Medium devices (tablets, 768px and up)
-
 @mixin tabletLaptop(){
-    @media (min-width: #{$tablet}) and (max-width: #{$full}){
+    @media (min-width: #{$tablet}) and (max-width: #{$full}){ //768px - 1920px ---Validar
         @content;
     }
 }
 
 // Large devices (desktops, 992px and up)
-
 @mixin laptopDesktop(){
-    @media (min-width: #{$laptop}) and (max-width: #{$Adesktop}){
+    @media (min-width: #{$laptop}) and (max-width: #{$Adesktop}){//992px - 1199.98px
         @content;
     }
 }
 
 // Extra large devices (large desktops, 1200px and up)
-
 @mixin desktopFull(){
-    @media (min-width: #{$desktop}) and (max-width: #{$Afull}){
+    @media (min-width: #{$desktop}) and (max-width: #{$Afull}){//1200px - 1919.98px
         @content;
     }
 }
 
 @mixin full(){
-    @media (min-width: #{$full}){
+    @media (min-width: #{$full}){//1920px; - Sin DEFINIR
         @content;
     }
 }

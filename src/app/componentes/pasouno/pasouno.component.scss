@@ -99,3 +99,10 @@ mat-label b{
   font-size: 13px;
   color: black;
 }
+
+.contBotonPaso{
+  @include smallTablet{
+    position: absolute;
+    left: 50%;
+  }
+}

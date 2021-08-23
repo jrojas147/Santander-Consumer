@@ -79,7 +79,7 @@ export class PasotresComponent implements OnInit{
           this.scanParams.enriquecido;
           this.AccionMensaje(this.letraMensaje);
             //test
-               this.letraMensaje = 'A';
+               this.letraMensaje = 'C';
                this.scanParams.enriquecido = true;
                this.AccionMensaje(this.letraMensaje);
         });
@@ -110,7 +110,6 @@ export class PasotresComponent implements OnInit{
          this.VarianteAprobado = 'sendMail';
          this.validarTituloModalRespuesta();
          this.procesarModalRespuesta();
-
       }
     }
   }
@@ -125,11 +124,11 @@ export class PasotresComponent implements OnInit{
 
   validarTituloModalRespuesta():void{
     if ( this.VarianteAprobado =='sendMail' ){
-      this.TituloModRespuesta = 'Credito Pre-Aprobado';
+      this.TituloModRespuesta = 'Credito  Pre-Aprobado';
       this.MensajeModRespuesta = 'Estas a punto de cumplir tus sueños, para finalizar solo tienes que diligenciar el siguiente formato. Te estaremos contactando pronto';
     }
     if ( this.VarianteAprobado =='sendWhatsapp' ){
-      this.TituloModRespuesta = 'Credito Pre-Aprobado';
+      this.TituloModRespuesta = 'Credito Aprobado';
       this.MensajeModRespuesta = 'Estas a punto de cumplir tus sueños, te estamos contactando con nuestro asesor mediante WhatsApp';
     }
   }
@@ -146,7 +145,7 @@ export class PasotresComponent implements OnInit{
       ejecutarFormularioPreaprobado: this.ejecutarFormularioPreaprobado
       },
       disableClose : true,
-      height: '270px',
+      height: '250px',
       width: '450px',
     });
     dialogRef.afterClosed().subscribe(result  =>{

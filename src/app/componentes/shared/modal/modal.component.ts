@@ -1,13 +1,13 @@
-import { DatosFinancieros } from './../../../interfaces/datosFinancieros';
-import { Constantes } from './../../../../constantes/constantes';
+
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
+import { ModalinfoComponent } from 'src/app/componentes/shared/modal-Info/modalinfo.component';
+import { Constantes } from 'src/constantes/constantes';
 import { FormularioPreAprobadoServiceService } from 'src/app/servicios/FormularioPreAprobado/formulario-pre-aprobado.service.service';
-import { FormBuilder, FormControl, FormGroup, FormsModule, Validators } from '@angular/forms'
 import * as moment from 'moment';
-import { ModalinfoComponent } from '../modal-Info/modalinfo.component';
 
 
 @Component({
@@ -30,28 +30,17 @@ import { ModalinfoComponent } from '../modal-Info/modalinfo.component';
 })
 export class ModalComponent implements OnInit {
   const = Constantes;
-  titulovalidado: string;
-  mensajevalidado: string;
-  // tipoModal: string = 'Generico'
-  // modalGenerico: boolean = false;
-  // modalPreaprobado: boolean =false;
-  // wppba: boolean;
-  // empba:boolean;
-  formulario_Empleado: FormGroup;//
-  Independiente = false;//
-  messageBody: string = '';//
-  stepFinish: boolean;//
+  formulario_Empleado: FormGroup;
+  Independiente = false;
+  messageBody: string = '';
+  stepFinish: boolean;
   maxDate = new Date();
   MinDate = moment().subtract(80, 'year');
-  //dialog: any;
   ejecutarFormularioPreaprobado: boolean;
   confirmSalir: boolean = false;
-  ModalInfoConfirSalir: boolean = false;
-  ModalInfooAvisoDocumentos: boolean = false;
   tituloModalInfo: string;
   mensajeModalInfo: string;
   mensajeModalInfo2: string;
-  tipoModalInfo: string;
   ModalConfirmSalir: boolean = false;
   ModalAvisoDocumentos: boolean = false;
 
@@ -69,15 +58,16 @@ export class ModalComponent implements OnInit {
       ejecutarFormularioPreaprobado: boolean
       tipoActividadEconomica: number
      },
-     private fb: FormBuilder,//
-     private http: HttpClient,//
+     private fb: FormBuilder,
+     private http: HttpClient,
      public DataFormualrioPreaprobado: FormularioPreAprobadoServiceService)////
-     {//
+     {
   }
 
   ngOnInit() {
     this.dirigirWhatsapp();
-    const Pba = this.dataModRespuesta.datacentrales;
+    this.dirigirForPreAprobado();
+    //const Pba = this.dataModRespuesta.datacentrales;
     this.Independiente = this.dataModRespuesta.datacentrales.DatosFinancieros.ActividadEconomica === 2 ? true : false;
     this.initFormulario_Empleados();//
   }
@@ -180,6 +170,14 @@ export class ModalComponent implements OnInit {
     if( this.dataModRespuesta.sendWhatsapp === true ){
       setTimeout( () => {
         this.ConectarWhatsapp();
+      },5000)
+    }
+  }
+
+  dirigirForPreAprobado(){
+    if( this.dataModRespuesta.sentEmail === true ){
+      setTimeout( () => {
+        this.procesarFormulario();
       },5000)
     }
   }

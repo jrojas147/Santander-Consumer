@@ -10,15 +10,40 @@
         grid-template-columns: $margenContenido auto 55%;
     }
     .contLogo{
-        text-align: center;
+        text-align: left;
         padding: 10px 0;
+        @include Asmall{
+          text-align: center;
+        }
+        @include smallTablet{
+          text-align: center;
+        }
         @include tabletLaptop(){
             text-align: left;
         }
+        @include laptopDesktop{
+          text-align: left;
+        }
+
         img{
-            width: 30%;
-            @include tabletLaptop(){
-                width: 25%;
+            @include Asmall{
+              width: 20%;
+            }
+            @include smallTablet{
+              width: 20%;
+            }
+            @include tabletLaptop{
+              width: 25%;
+            }
+            @include laptopDesktop{
+              width: 25%;
+            }
+            @include desktopFull{
+              width: 25%;
+            }
+            @include full{
+              width: 25%;
+
             }
         }
     }

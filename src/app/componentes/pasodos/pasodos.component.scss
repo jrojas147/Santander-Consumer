@@ -44,7 +44,7 @@ div#check {
 }
 
 .contCampoDos{
-    
+
     @include tabletLaptop(){
         display: grid;
         grid-template-columns: repeat(2, auto);
@@ -52,7 +52,7 @@ div#check {
     }
 }
 
-.santanderConsumer{
+.santanderFinancing{
     @include tabletLaptop(){
         display: grid;
         grid-template-columns: 25% 65%;
@@ -67,3 +67,10 @@ div#check {
     }
 }
 
+.contBotonPaso{
+  @include smallTablet{
+    position: absolute;
+    left: 50%;
+  }
+
+}

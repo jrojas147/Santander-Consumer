@@ -134,7 +134,10 @@
     line-height: 36px;
     text-align: center !important;
     @include smallTablet{
-      display: block;
+      position: absolute;
+      left: 35%;
+
+      background-color: plum;
     }
 
     @include Asmall() {
@@ -167,6 +170,12 @@
         top: 20px;
         left: 20px;
       }
+      @include smallTablet{
+        position: absolute;
+        top: 137%;
+        left: 35%;
+      }
+
     }
     .acctions-button {
       padding-top: -10%;
