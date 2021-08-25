@@ -79,7 +79,7 @@ export class PasotresComponent implements OnInit{
           this.scanParams.enriquecido;
           this.AccionMensaje(this.letraMensaje);
             //test
-               this.letraMensaje = 'C';
+               this.letraMensaje = 'A';
                this.scanParams.enriquecido = true;
                this.AccionMensaje(this.letraMensaje);
         });
