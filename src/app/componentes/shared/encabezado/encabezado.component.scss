@@ -2,6 +2,25 @@
 @import './../../../../scss/mixins';
 
 .contenedor{
+  // @include Asmall{
+  //   background-color: aqua;
+  // }
+  // @include smallTablet{
+  //   background-color: coral;
+  // }
+  // @include tabletLaptop{
+  //   background-color: cornflowerblue;
+  // }
+  // @include laptopDesktop{
+  //   background-color: darksalmon;
+  // }
+  // @include desktopFull{
+  //   background-color: greenyellow;
+  // }
+  // @include full{
+  //   background-color: lightseagreen;
+  // }
+
     display: grid;
     grid-template-columns: $margenContenido auto $margenContenido;
     border-bottom: 3px solid $colorPrimario;

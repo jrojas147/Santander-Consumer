@@ -1,7 +1,8 @@
 <section class="section-modal">
   <div *ngIf="dataModRespuesta.tipoModal === 'Generico'" class="modal-Generico">
     <div class="encabezado">
-      <img [src]="const.cliente" alt="">
+      <!-- <div class="logoSantanderRojo">
+      <img class="logoSantander" [src]="const.santanderFinancingRojo" alt=""></div> -->
       <div class="titulo"><h1>{{dataModRespuesta.Titulo}}</h1></div>
     </div>
     <div class="body">{{dataModRespuesta.Mensaje}}</div><br>
@@ -19,9 +20,7 @@
   </div>
   <div *ngIf="dataModRespuesta.tipoModal === 'FormularioPreAprobado'" class="modal-preaprobado">
     <div class="contLogo">
-      <div class="img">
-        <img [src]="const.cliente" alt="">
-      </div>
+        <img class="logoSantander" [src]="const.santanderFinancingRojo" alt="">
       <div class="Titulo">"Falta poco" Ingresa tus datos para finalizar</div>
     </div>
     <form [formGroup]="formulario_Empleado">
@@ -282,13 +281,13 @@
       <hr>
       <hr>
         <div class="contBotonPaso">
-          <div class="BtonAccion">
+          <div class="BtonAccionFormulario">
             <button mat-button (click)="ProcesarAvisoDocumentos()"
               color="primary" type="button" [disabled]="formulario_Empleado.status === 'INVALID'" class="btnPrimario">
               Enviar
             </button>
           </div>
-          <div class="BtnSalir">
+          <div class="BtnSalirFormulario">
             <button mat-button color="primary" id="finalizar" (click)="ProcesarSalir()" class="piepaso">Salir</button>
           </div>
         </div>
