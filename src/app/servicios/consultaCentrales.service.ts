@@ -35,6 +35,7 @@ export class ConsultaCentralesService {
       ConcesionarioRadicacion: 99,
       IdentificacionVendedor: null,
       Marca: null,
+      InfoUno: '',
       InfoDos: '',
       InfoTres: ''
     },
@@ -71,45 +72,42 @@ export class ConsultaCentralesService {
 
   autenticando() {
     this.scanParams.enriquecido = false;
-    if (this.scanParams.utm) {
-      this.contactoCentrales.OtrosDatos.InfoUno = this.scanParams.utm;
-    }
+    // if (this.scanParams.utm) {
+    //   this.contactoCentrales.OtrosDatos.InfoUno = this.scanParams.utm;
+    // }
     if (this.scanParams.idc) {
       this.contactoCentrales.OtrosDatos.ConcesionarioRadicacion = this.scanParams.idc;
     }
     if (this.scanParams.idv) {
       this.contactoCentrales.OtrosDatos.IdentificacionVendedor = this.scanParams.idv;
     }
+    if (this.scanParams.roisenseBool) {
+      this.contactoCentrales.OtrosDatos.ConcesionarioRadicacion = 433;
+    }
+    if (!this.scanParams.roisense && !this.scanParams.idc) {
+      this.contactoCentrales.OtrosDatos.ConcesionarioRadicacion = 99;
+    }
+    if( this.scanParams.idc === 381){
+      this.contactoCentrales.OtrosDatos.InfoUno = 'TuCarrro'
+    }
     if (this.scanParams.roisense) {
       this.contactoCentrales.OtrosDatos.InfoDos = this.scanParams.roisense;
     }
 
-    if (this.scanParams.roisenseBool) {
-      this.contactoCentrales.OtrosDatos.ConcesionarioRadicacion = 433;
-    }
-
-    if (!this.scanParams.roisense && !this.scanParams.idc) {
-      this.contactoCentrales.OtrosDatos.ConcesionarioRadicacion = 99;
-    }
-
+    //Token
     const bodyT = {
       UserPass: this.const.userpass
     };
-
     const body = new HttpParams({fromObject: bodyT});
-
-
     return this.http.post(`${this.env.urlA}`, body, this.options)
     .subscribe((resp: any) => {
            this.token = resp.Token;
            this.autenticar = resp.Status;
            this.contactoCentrales.OtrosDatos.InfoTres = this.linkOrigen;
-
            this.headerVi = {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + this.token
            };
-
            this.optionsVi = { headers: this.headerVi };
            this.observableAutenticar.next(this.autenticar);
       });

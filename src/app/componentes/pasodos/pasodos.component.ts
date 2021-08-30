@@ -73,11 +73,9 @@ export class PasodosComponent {
   get idNoValido() {
     return this.segundo.get('numeroDocumento').invalid && this.segundo.get('numeroDocumento').touched;
   }
-
   get documentoExtranjeria() {
     return this.segundo.controls['tipoDocumento'].value == 1 && this.segundo.controls['numeroDocumento'].value.length == 6 && this.segundo.get('numeroDocumento').touched;
   }
-
   get celularNoValido() {
     return this.segundo.get('celular').invalid && this.segundo.get('celular').touched;
   }

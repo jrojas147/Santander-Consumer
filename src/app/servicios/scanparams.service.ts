@@ -27,9 +27,9 @@ export class ScanparamsService {
       if (data.fuente === 'enriquecido') {
         this.enriquecido = true;
       }
-      if (data.utm_source) {
-        this.utm = data.utm_source;
-      }
+      // if (data.utm_source) {
+      //   this.utm = data.utm_source;
+      // }
       if (data.idc) {
         this.idc = Number(data.idc);
       }
