@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pie.component.scss']
 })
 export class PieComponent implements OnInit {
-
   dateNow = new Date().getFullYear();
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit() {
   }

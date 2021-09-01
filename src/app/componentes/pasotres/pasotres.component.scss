@@ -21,7 +21,7 @@
     min-height: 45vh;
     display: grid;
     padding: 10px;
-    text-align: center;
+    text-align: justify;
     font-size: 12px;
     img{
         justify-self: center;
@@ -35,6 +35,12 @@
     }
     .textoRespuesta{
         color: $colorCuatro
+    }
+    .lista ul{
+      list-style-position: outside;
+      margin: 10px;
+      list-style-type: square;
+      text-align: left;
     }
 }
 
