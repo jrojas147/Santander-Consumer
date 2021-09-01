@@ -9,7 +9,7 @@ export const Constantes = {
             ],
     minimo: 10000000,
     precioMinimo: 13000000,
-    valorMinIngreso: 1200,
+    valorMinIngreso: 1200000,
     tasa: 0.0115,
     constanteSeguro: 1220 / 1000000,
      /* Regex */
