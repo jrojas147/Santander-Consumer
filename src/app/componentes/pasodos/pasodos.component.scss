@@ -40,7 +40,6 @@ div#check {
 }
 
 .santanderFinancing{
-  @include tabletLaptop(){
       display: grid;
       grid-template-columns: 25% 65%;
       text-align: justify;
@@ -56,45 +55,8 @@ div#check {
           font-size: 10px;
           }
       }
-  }
 }
 
-
-
-
-
-// .santanderFinancing{
-//   font-size: 12px;
-//   .centro{
-//     @include Asmall{
-//       width: 37%;
-//     }
-//     @include smallTablet{
-//       width: 32%;
-//     }
-//     @include tabletLaptop(){
-//       width: 35%;
-//       display: grid;
-//       grid-template-columns: 25% 65%;
-//       text-align: justify;
-//       grid-column-gap: 35px;
-//       p{
-//         @include tabletLaptop(){
-//         font-size: 10px;
-//         }
-//       }
-//     }
-//     @include laptopDesktop{
-//       width: 150px;
-//     }
-//     @include desktopFull{
-//       width: 150px;
-//     }
-//     @include full{
-//       width: 150px;
-//     }
-//   }
-// }
 
 .contBotonPaso{
   @include smallTablet{
