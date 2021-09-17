@@ -106,12 +106,20 @@ export class PasotresComponent implements OnInit{
     }
     if (letraMensaje === 'C' ) {
       if( this.scanParams.enriquecido == true){
-        this.sendMail = true;
-         this.VarianteAprobado = 'sendMail';
+        this.sendWhatsapp = true;
+         this.VarianteAprobado = 'sendWhatsapp';
          this.validarTituloModalRespuesta();
          this.procesarModalRespuesta();
       }
     }
+    // if (letraMensaje === 'C' ) {
+    //   if( this.scanParams.enriquecido == true){
+    //     this.sendMail = true;
+    //      this.VarianteAprobado = 'sendMail';
+    //      this.validarTituloModalRespuesta();
+    //      this.procesarModalRespuesta();
+    //   }
+    // }
   }
 
   gotoReferrer() {

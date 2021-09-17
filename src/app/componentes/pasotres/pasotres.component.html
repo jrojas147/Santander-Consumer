@@ -18,7 +18,7 @@
           </div>
         </div>
         <!--Respuesta B-->
-        <div *ngIf="letraMensaje === 'B' && scanParams.enriquecido">
+        <div *ngIf="letraMensaje === 'B' || letraMensaje === 'C'  && scanParams.enriquecido">
           <div class="contRespuesta">
             <img [src]="const.aprobado" alt="">
             <p class="tituloAprobado">Aprobado
@@ -27,7 +27,7 @@
           </div>
         </div>
         <!--Respuesta C-->
-        <div *ngIf="letraMensaje === 'C' && scanParams.enriquecido">
+        <!-- <div *ngIf="letraMensaje === 'C' && scanParams.enriquecido">
           <div class="contRespuesta">
             <img [src]="const.aprobado" alt="">
             <p class="tituloAprobado">
@@ -43,7 +43,7 @@
                   Recuerda que puedes consultar toda la documentación requerida para obtener tu crédito vehicular haciendo clic aquí. <a href="https://santanderfinancing.com/requerimientos-credito//">https://santanderfinancing.com/requerimientos-credito/</a>
                 </div>
           </div>
-        </div>
+        </div> -->
         <!--Respuesta D-->
         <div *ngIf="letraMensaje === 'D' && scanParams.enriquecido">
           <div class="contRespuesta">
