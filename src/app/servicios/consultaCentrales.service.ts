@@ -90,10 +90,12 @@ export class ConsultaCentralesService {
     if( this.scanParams.idc === 381){
       this.contactoCentrales.OtrosDatos.InfoUno = 'TuCarrro'
     }
+    if (this.scanParams.idc === 370){
+      this.contactoCentrales.OtrosDatos.InfoUno = 'BioCredit'
+    }
     if (this.scanParams.roisense) {
       this.contactoCentrales.OtrosDatos.InfoDos = this.scanParams.roisense;
     }
-
     //Token
     const bodyT = {
       UserPass: this.const.userpass
