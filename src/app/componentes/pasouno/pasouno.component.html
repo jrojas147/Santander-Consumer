@@ -4,12 +4,8 @@
       <p class="derecha">* Información requerida</p>
   </div>
   <hr>
-  <h1>Prueba</h1>
-
   <form [formGroup]="primero">
-
       <div id="segundo" class="contCampoDos">
-
       <div>
       <mat-label>¿Cuál es el precio del vehiculo?</mat-label>
       <mat-form-field appearance="outline" class="full-width">
@@ -94,8 +90,27 @@
               readonly>
               <mat-error *ngIf="montoNoValido">Debes diligenciar mínimo $ {{const.minimo | number:'1.0':'es'}}</mat-error>
           </mat-form-field>
-      </div>
+          <div class="informacionTexto">
+            <ul>
+              <li>
+                Esta simulación es una proyección estimada del comportamiento de tu crédito.
+              </li>
+              <li>
+                En ningún momento corresponderá a una oferta comercial.
+              </li>
+              <li>
+                Sujeto a perfil de riesgo.
+              </li>
+              <li>
+                El valor indicado no incluye Seguros.
+              </li>
+              <li>
+                Tasa aproximada sujeto a perfil de cliente.
+              </li>
+            </ul>
 
+          </div>
+      </div>
       <hr>
       <div class="contBotonPaso">
       <div class="piepaso">

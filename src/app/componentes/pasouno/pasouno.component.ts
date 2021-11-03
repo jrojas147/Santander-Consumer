@@ -27,19 +27,16 @@ import { ModalinfoComponent } from '../shared/modal-Info/modalinfo.component';
   ]
 })
 export class PasounoComponent {
-
   primero: FormGroup;
   const = Constantes;
   porcentaje: number = 0;
   matcher = new TouchedErrorStateMatcher;
-
 
   tituloModalInfo: String
   mensajeModalInfo: String
   mensajeModalInfo2: string
   ModalConfirmSalir:  boolean = false
   ModalAvisoDocumentos: boolean = false
-
 
   constructor( private dialog: MatDialog,
                public formBuilder: FormBuilder,
@@ -48,15 +45,12 @@ export class PasounoComponent {
     this.crearFormulario();
     this.statusCambia();
 
-
-
-
    }
 
   crearFormulario() {
     this.primero = this.formBuilder.group({
       precio: ['', [Validators.required, Validators.min(this.const.precioMinimo)]],
-      modelo: ['', [Validators.required]],
+      modelo: [ [Validators.required]],
       cuotaInicial: ['', [Validators.required]],
       monto: ['', [Validators.required, Validators.min(this.const.minimo)]],
       periodo: ['', Validators.required],
@@ -103,7 +97,6 @@ export class PasounoComponent {
     this.consultaCentrales.contactoCentrales.OtrosDatos.ValorFinanciar = valorVehiculo - cuotaInicial;
     this.primero.controls['monto'].setValue(valorVehiculo - cuotaInicial);
     this.calculaPorcentaje();
-
   }
 
   calculaPorcentaje(){
@@ -121,19 +114,15 @@ export class PasounoComponent {
       case 48:
         value = 4;
         break;
-
       case 60:
         value = 5;
         break;
-
       case 72:
         value = 6;
         break;
-
       case 84:
         value = 7;
         break;
-
       default:
         break;
     }
@@ -142,7 +131,7 @@ export class PasounoComponent {
 
   get montoNoValido() {
     const test = this.primero.getRawValue();
-    if (test.monto < this.const.minimo) {
+    if (test.monto < this.const.minimo && test.monto > 0) {
       return true;
     }
   }
