@@ -3,6 +3,10 @@ import { Constantes } from '../constantes/constantes';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ConsultaCentralesService } from './servicios/consultaCentrales.service';
 import { ScanparamsService } from './servicios/scanparams.service';
+import { NavigationEnd, Router } from '@angular/router'
+import { filter } from 'rxjs/operators'
+
+declare var gtag;
 
 
 @Component({
@@ -27,9 +31,11 @@ export class AppComponent {
   splash = true;
 
   constructor(public consultaCentrales: ConsultaCentralesService,
-              public scanParams: ScanparamsService) {
+    public scanParams: ScanparamsService,
+    private router: Router) {
     this.scanParams.getParam();
     this.splashToggle();
+    this.listenGoogleAnalitycs();
   }
 
   splashToggle() {
@@ -37,5 +43,20 @@ export class AppComponent {
       this.splash = false;
       this.consultaCentrales.linkOrigen = document.referrer;
     }, 2000);
+  }
+
+  listenGoogleAnalitycs() {
+    const navEndEvents$ = this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd)
+      );
+      navEndEvents$.subscribe((event: NavigationEnd) => {
+        gtag('config', 'G-6TQS25919L', {
+          'page_path': event.urlAfterRedirects
+        });
+
+      });
+
+
   }
 }
