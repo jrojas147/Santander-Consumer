@@ -224,6 +224,7 @@ export class ModalComponent implements OnInit {
    ejecutarModalAvisoSalir(){
     const dialogRef =this.dialog.open(ModalinfoComponent, {
       data: {
+        tipoModal : "modalInfo",
         titulo : this.tituloModalInfo,
         mensaje : this.mensajeModalInfo,
         mensaje2: this.mensajeModalInfo2,

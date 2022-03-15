@@ -5,6 +5,9 @@ import { ConsultaCentralesService } from 'src/app/servicios/consultaCentrales.se
 import { RespuestaCalculadoraService } from 'src/app/servicios/respuestaCalculadora.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ScanparamsService } from 'src/app/servicios/scanparams.service';
+import { ModalComponent } from '../shared/modal/modal.component';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { ModalinfoComponent } from '../shared/modal-Info/modalinfo.component';
 
 
 
@@ -33,7 +36,8 @@ export class PasodosComponent {
   constructor(public formBuilder: FormBuilder,
               public consultaCentrales: ConsultaCentralesService,
               public respuestaCalculadora: RespuestaCalculadoraService,
-              public scanparamsService: ScanparamsService
+              public scanparamsService: ScanparamsService,
+              private dialog: MatDialog
               ) {
     this.crearFormulario();
     this.statusCambia();
@@ -109,6 +113,21 @@ export class PasodosComponent {
   statusCambia() {
     this.segundo.statusChanges.subscribe(val => {
       val === 'VALID' ? this.consultaCentrales.segundoCompleto = true : this.consultaCentrales.segundoCompleto = false;
+    });
+  }
+
+  procesarmodal(tipoModal: string){
+    const dialogRef =this.dialog.open(ModalinfoComponent, {
+      data: {
+        tipoModal : tipoModal
+        // titulo : this.tituloModalInfo,
+        // mensaje : this.mensajeModalInfo,
+        // mensaje2: this.mensajeModalInfo2,
+        // tipoModalDocumentos : this.ModalAvisoDocumentos
+      },
+      disableClose : true,
+       height: '600px',
+       width:  '570px',
     });
   }
 }

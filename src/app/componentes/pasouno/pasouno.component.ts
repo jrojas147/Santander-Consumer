@@ -48,9 +48,6 @@ export class PasounoComponent {
     this.crearFormulario();
     this.statusCambia();
 
-
-
-
    }
 
   crearFormulario() {
@@ -59,7 +56,7 @@ export class PasounoComponent {
       modelo: ['', [Validators.required]],
       cuotaInicial: ['', [Validators.required]],
       monto: ['', [Validators.required, Validators.min(this.const.minimo)]],
-      periodo: ['', Validators.required],
+      periodo: [60 , Validators.required],
       cuota: [0, Validators.required]
     });
 

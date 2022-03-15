@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ModalComponent } from '../modal/modal.component';
+import {MatButtonModule} from '@angular/material/button';
+
 
 @Component({
   selector: 'app-modalinfo',
@@ -8,22 +9,24 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrls: ['./modalinfo.component.scss']
 })
 export class ModalinfoComponent implements OnInit {
+  tipoModal: string;
 
   constructor(
     private dialogRef: MatDialogRef<ModalinfoComponent>,
     @Inject(MAT_DIALOG_DATA) public dataInfo: {
+      tipoModal: string,
       titulo: string,
       mensaje: string,
       mensaje2: string,
       tipoModalSalir: boolean,
       tipoModalDocumentos: boolean
      },
-  ) { }
-
-  ngOnInit() {
-    //this.tipoModal = this.dataInfo.tipoModal;
+  ) {
+    this.tipoModal = dataInfo.tipoModal;
   }
 
+  ngOnInit() {
+  }
 
   salirViabilizacion(): void{
     this.dialogRef.close(true);
@@ -32,9 +35,4 @@ export class ModalinfoComponent implements OnInit {
   Mantener(){
     this.dialogRef.close();
   }
-
-
-
-
-
 }
